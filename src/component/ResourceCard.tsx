@@ -8,7 +8,7 @@ type Props = {
 export const ResourceCard: FC<Props> = ({ resource }) => {
   return (
     <article
-      style={{ borderColor: resource.category.color }}
+      style={{ borderColor: resource.category.backgroundColor }}
       className='rounded-xl max-w-xs shadow-sm relative flex flex-col overflow-hidden border-[3px] border-red-500'
     >
       <img

@@ -1,6 +1,7 @@
 export type Category = {
   id: string
   name: string
-  image: string
-  color: string
+  icon: string
+  textColor: string
+  backgroundColor: string
 }
