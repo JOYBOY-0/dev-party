@@ -1,6 +1,6 @@
 import { supabase } from '@/supabase/supabaseClient'
 import { useEffect } from 'react'
-import { Route } from 'react-router'
+import { Route } from 'react-router-dom'
 import { PublicRoutes } from './guard/routes'
 import { RouteNotFound } from './utilities/RouteNotFound'
 import Login from './views/auth/Login'
@@ -29,3 +29,5 @@ function App () {
     </RouteNotFound>
   )
 }
+
+export default App

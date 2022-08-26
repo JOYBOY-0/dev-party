@@ -1,5 +1,5 @@
 import React, {FC} from 'react'
-import { Route, Routes } from 'react-router'
+import { Route, Routes } from 'react-router-dom'
 
 type Props = {
     children: React.ReactNode
