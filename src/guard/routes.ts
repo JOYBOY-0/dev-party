@@ -1,9 +1,10 @@
-export enum PublicRoutes  {
-    LOGIN= 'login',
-    REGISTER= 'register'
+export enum PublicRoutes {
+  LOGIN = 'login',
+  REGISTER = 'register',
+  LANDING = 'landing'
 }
 
-export enum PrivateRoutes  {
-    HOME= '/',
-    INVENTORY= 'inventory'
+export enum PrivateRoutes {
+  HOME = '/',
+  INVENTORY = 'inventory'
 }
