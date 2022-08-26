@@ -1,0 +1,48 @@
+.auth_container{
+    @apply flex flex-col w-full min-h-screen m-auto justify-center items-center overflow-hidden bg-slate-700;
+    /* background: url("../../resources/images/backgrounds/background_moon_desert.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover */
+}
+
+.auth_wrapper{
+    @apply w-full p-4 max-w-[400px]
+}
+
+.auth_form_box{
+    background: linear-gradient(180deg, white 75%, rgba(255, 255, 255, 0.25) 100%);
+    backdrop-filter: blur(4px);
+    @apply flex flex-col items-center shadow-md p-6 rounded-lg w-full;
+}
+
+.auth_title{
+    @apply text-2xl font-semibold font-[Rowdies] text-zinc-800 mb-2;
+}
+
+.auth_subtitle{
+    @apply text-gray-600 text-center;
+}
+
+.auth_label{
+    @apply text-lg mb-1 mt-4 w-full font-[Rowdies] text-gray-600;
+}
+
+.auth_input{
+    @apply p-3 rounded-md shadow-inner bg-gray-100 w-full;
+}
+
+.auth_btn{
+    box-shadow: #2564eb40 0px 5px 15px;
+    @apply font-[Rowdies] text-white tracking-wider 
+    text-xl bg-blue-600 py-2 px-8 flex mt-4 rounded-lg
+    transition-all duration-300 ease-in-out hover:bg-blue-500;
+}
+
+.auth_btn:hover{
+    box-shadow: #0ea4e95f 0px 0px 3px, #1e3a8a64 0px 5px 15px;
+}
+
+.auth_apps_wrapper{
+    @apply flex w-full h-12 mt-6 justify-between
+}
