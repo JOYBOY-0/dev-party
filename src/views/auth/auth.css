@@ -13,23 +13,19 @@
 .auth_form_box {
   /* background: linear-gradient(180deg,  75%, rgba(255, 255, 255, 0.25) 100%); */
   backdrop-filter: blur(4px);
-  @apply flex flex-col items-center 
-    font-primary
-    p-6 rounded-lg w-full
-    shadow-md 
-    bg-slate-700;
+  @apply flex flex-col items-center font-primary p-6 rounded-lg w-full shadow-md bg-slate-700;
+}
+
+.auth_form_content {
+  @apply flex flex-col w-full items-center justify-center;
 }
 
 .auth_title {
-  @apply text-2xl font-bold  tracking-wide text-slate-100 mb-2;
+  @apply text-2xl font-bold tracking-wide text-slate-100 mb-2;
 }
 
 .auth_subtitle {
   @apply text-slate-200 text-center mb-4;
-}
-
-.auth_input {
-  @apply w-full p-3 text-slate-100 placeholder:text-slate-400 rounded-md shadow-inner bg-slate-600;
 }
 
 .auth_label {
@@ -37,9 +33,7 @@
 }
 
 .auth_input {
-  @apply w-full p-3 
-    text-slate-100 placeholder:text-slate-400
-    rounded-md shadow-inner bg-slate-600;
+  @apply w-full p-3 text-slate-100 placeholder:text-slate-400 rounded-md shadow-inner bg-slate-600;
 }
 
 .auth_btn {
