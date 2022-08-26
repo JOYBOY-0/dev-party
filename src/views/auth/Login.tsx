@@ -76,7 +76,7 @@ export default function Login() {
 
           </div>
           <p className='mt-4 text-center text-white'>Forgot your password?
-            <link to='/login' className='font-bold text-blue-500 mx-1'>Recover it</Link>
+            <Link to='/login' className='font-bold text-blue-500 mx-1'>Recover it</Link>
           </p>
         </>
         )}
