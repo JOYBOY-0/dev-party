@@ -1,24 +1,27 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
 type Props = {
-    handleLogin: (email: string, password: string) => void,
+    handleSignup: (email: string, password: string) => void,
     password: string,
     email: string,
     setPassword: (password: string) => void,
     setEmail: (email: string) => void,
 }
 
-export const Login : FC<Props> =({
-    password, setPassword, email, setEmail, handleLogin
+export const Signup : FC<Props> =({
+    password, setPassword, email, setEmail, handleSignup
 }) => {
+
+    const [passwordRepeat, setPasswordRepeat] = useState('')
+
   return (
     <div
         className="auth_form_content"
     >
-        <h1 className="auth_title">Welcome
-        <span className="text-pink-500"> back!</span>
+        <h1 className="auth_title">Be better
+        <span className="text-pink-500"> today!</span>
         </h1>
-        <p className="auth_subtitle">Find usefull web apps today!</p>
+        <p className="auth_subtitle">Register to start being more productive</p>
         <label
         htmlFor="email"
         className='auth_label'
@@ -38,6 +41,21 @@ export const Login : FC<Props> =({
         htmlFor="password"
         className='auth_label'
         >
+        Confirm password
+        </label>
+        <input
+        id="password"
+        className="auth_input"
+        type="password"
+        placeholder="Your password"
+        value={passwordRepeat}
+        onChange={(e)=> setPasswordRepeat(e.target.value)}
+        />
+
+        <label
+        htmlFor="password"
+        className='auth_label'
+        >
         Password
         </label>
         <input
@@ -48,9 +66,10 @@ export const Login : FC<Props> =({
         value={password}
         onChange={(e)=> setPassword(e.target.value)}
         />
+
         <div className='auth_btn_wrapper'>
             <button
-                onClick={() => handleLogin(email, password)}
+                onClick={() => handleSignup(email, password)}
                 className="auth_btn"
                 aria-live="polite"
             >
@@ -60,5 +79,3 @@ export const Login : FC<Props> =({
     </div>
     )
 }
-
-

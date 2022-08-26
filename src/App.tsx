@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { PublicRoutes } from './guard/routes'
 import { RouteNotFound } from './utilities/RouteNotFound'
-import Login from './views/auth/Login'
+import Auth from './views/auth/Auth'
 
 function App () {
   useEffect(() => {
@@ -19,7 +19,8 @@ function App () {
   return (
     <RouteNotFound>
       {/* <Route path="/" element={<Navigate to={PrivateRoutes.HOME} />} /> */}
-      <Route path={PublicRoutes.LOGIN} element={<Login />} />
+      <Route path={PublicRoutes.AUTH} element={<Auth />} />
+
       {/* <Route path={PublicRoutes.REGISTER} element={<SignUp />} /> */}
 
       {/* <Route element={<AuthGuard />}>

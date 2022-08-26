@@ -1,20 +1,36 @@
+import { Provider } from '@supabase/supabase-js'
 import React, { FC } from 'react'
 
-type Props = {
-  children: React.ReactNode,
-  onClick: () => void,
-  backgroundColor: string,
+interface Props extends React.HTMLAttributes<HTMLButtonElement> {
+  // children: React.ReactNode,
+  onClick?: () => void,
+  backgroundColor?: string,
+  iconClass?: string,
+  iconSrc?: string,
+  provider: Provider,
+  className?: string,
 }
 
-export const ProviderBtn: FC<Props> = (props) => {
+export const ProviderBtn: FC<Props> = ({
+  // children,
+  onClick,
+  provider,
+  backgroundColor = "FFF",
+  iconClass = "w-full h-full p-3",
+  iconSrc,
+  className,
+  ...props
+}) => {
   return (
-    <button onClick={props.onClick}
-      className={`w-[30%] 
-    bg-[${props.backgroundColor}] rounded-lg shadow
+    <button
+      style={{ backgroundColor }}
+      onClick={onClick}
+      className={`${className}
+       rounded-lg shadow
     transition-all duration-300 ease-in-out 
     cursor-pointer hover:shadow-lg`}
     >
-      <img className='w-full h-full p-3' src="/icons/Discord_Logo.svg" alt='Login with google' />
+      <img className={iconClass} src={iconSrc} alt={`Login with ${provider}`} />
     </button>
   )
 }
