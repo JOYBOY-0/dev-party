@@ -23,8 +23,10 @@ export default function Login() {
           <div 
             className="auth_form_box"
           >
-            <h1 className="auth_title">Welcome back!</h1>
-            <p className="auth_subtitle">The adventure awaits for you</p>
+            <h1 className="auth_title">Welcome  
+                <span className="text-pink-500"> back!</span>
+            </h1>
+            <p className="auth_subtitle">Find usefull web apps today!</p>
             <label 
               htmlFor="email"
               className='auth_label'
@@ -70,13 +72,13 @@ export default function Login() {
               <FacebookAuth />
             </div> */}
 
-            <p className='mt-4'>Don't have an account?
-              <Link to='/signup' className='font-bold text-blue-500 mx-1'>Sign up</Link>
-            </p>
+          <p className='mt-4 text-slate-300'>Don't have an account?
+            <Link to='/signup' className='font-bold text-blue-500 mx-1'>Sign up</Link>
+          </p>
 
           </div>
           <p className='mt-4 text-center text-white'>Forgot your password?
-            <Link to='/login' className='font-bold text-blue-500 mx-1'>Recover it</Link>
+            <Link to='/login' className='font-bold text-yellow-500 mx-1'>Recover it</Link>
           </p>
         </>
         )}

@@ -1,5 +1,5 @@
 .auth_container{
-    @apply flex flex-col w-screen min-h-screen m-auto justify-center items-center overflow-hidden bg-slate-700;
+    @apply flex flex-col w-screen min-h-screen m-auto justify-center items-center overflow-hidden bg-slate-900;
     /* background: url("../../resources/images/backgrounds/background_moon_desert.svg");
     background-position: center center;
     background-repeat: no-repeat;
@@ -11,36 +11,45 @@
 }
 
 .auth_form_box{
-    background: linear-gradient(180deg, white 75%, rgba(255, 255, 255, 0.25) 100%);
+    /* background: linear-gradient(180deg,  75%, rgba(255, 255, 255, 0.25) 100%); */
     backdrop-filter: blur(4px);
-    @apply flex flex-col items-center shadow-md p-6 rounded-lg w-full;
+    @apply flex flex-col items-center 
+    font-primary
+    p-6 rounded-lg w-full
+    shadow-md 
+    bg-slate-700;
 }
 
 .auth_title{
-    @apply text-2xl font-semibold font-[Rowdies] text-zinc-800 mb-2;
+    @apply text-2xl font-bold  tracking-wide text-slate-100 mb-2;
 }
 
 .auth_subtitle{
-    @apply text-gray-600 text-center;
+    @apply text-slate-200 text-center mb-4;
 }
 
 .auth_label{
-    @apply text-lg mb-1 mt-4 w-full font-[Rowdies] text-gray-600;
+    @apply text-lg mb-1 mt-4 w-full font-semibold text-slate-300;
 }
 
 .auth_input{
-    @apply p-3 rounded-md shadow-inner bg-gray-100 w-full;
+    @apply w-full p-3 
+    text-slate-100 placeholder:text-slate-400
+    rounded-md shadow-inner bg-slate-600;
 }
 
 .auth_btn{
-    box-shadow: #2564eb40 0px 5px 15px;
-    @apply font-[Rowdies] text-white tracking-wider 
-    text-xl bg-blue-600 py-2 px-8 flex mt-4 rounded-lg
-    transition-all duration-300 ease-in-out hover:bg-blue-500;
+    box-shadow: #eb258840 0px 5px 15px;
+    @apply 
+    flex mt-4 py-2 px-8
+    text-white tracking-wider text-xl font-bold
+    bg-pink-600  rounded-lg
+    transition-all duration-300 ease-in-out 
+    hover:bg-pink-500;
 }
 
 .auth_btn:hover{
-    box-shadow: #0ea4e95f 0px 0px 3px, #1e3a8a64 0px 5px 15px;
+    box-shadow: #e90ea75f 0px 0px 3px, #8a1e5964 0px 5px 15px;
 }
 
 .auth_apps_wrapper{
