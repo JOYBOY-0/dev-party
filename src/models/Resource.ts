@@ -1,4 +1,5 @@
 import { Category } from '@/models/Category'
+import { Tag } from './Tag'
 
 export type Resource = {
   id: string
@@ -6,9 +7,9 @@ export type Resource = {
   description: string
   company: string
   companyUrl: string
-  tags: number[]
+  tags: Tag[]
   url: string
   image: string
   imageAlt: string
-  category: Category['id']
+  category: Category
 }
