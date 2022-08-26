@@ -40,9 +40,9 @@
     box-shadow: #eb258840 0px 5px 15px;
     @apply flex mt-4 py-2 px-8 
     text-white tracking-wider text-xl font-bold 
-    bg-pink-600 rounded-lg 
+    bg-devPink-600 rounded-lg 
     transition-all duration-300 ease-in-out 
-    hover:bg-pink-500;
+    hover:bg-devPink-500;
 }
 
 .auth_btn:hover {
@@ -60,7 +60,7 @@
 }
 
 .auth_bg_anim {
-    @apply p-2 rounded-2xl bg-pink-600 relative z-0 overflow-hidden
+    @apply p-2 rounded-2xl bg-devPink-600 relative z-0 overflow-hidden
 }
 
 .auth_bg_anim::before{
@@ -71,11 +71,11 @@
     top: -50%;
     width: 200%;
     height: 200%;
-    background-color: #399953;
+    background-color: var(--devPink-600);
     background-repeat: no-repeat;
     background-size: 50% 50%, 50% 50%;
     background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-    background-image: linear-gradient(#FFE226, #FFE226), linear-gradient(#EC2872, #EC2872), linear-gradient(#2F9AEB, #2F9AEB), linear-gradient(#EC2872, #EC2872);
+    background-image: linear-gradient(var(--devyellow-400), var(--devyellow-400)), linear-gradient(var(--devpink-600), var(--devpink-600)), linear-gradient( var(--devblue-600), var(--devblue-600)), linear-gradient( var(--devpink-600),  var(--devpink-600));
     animation: solid-rotate 6s linear infinite;
 	}
 	
