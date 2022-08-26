@@ -1,14 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}",
-  ],
-    theme: {
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  theme: {
     extend: {
       fontFamily: {
-      'seconday': ['Inter', 'sans-serif'],
-      'primary': ['Montserrat', 'sans-serif'],
+        seconday: ['Inter', 'sans-serif'],
+        primary: ['Montserrat', 'sans-serif']
       }
     }
   },
