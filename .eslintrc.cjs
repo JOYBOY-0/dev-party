@@ -4,19 +4,13 @@ module.exports = {
     es2021: true,
     node: true
   },
-  extends: [
-    'plugin:react/recommended',
-    'standard-with-typescript'
-  ],
-  overrides: [
-  ],
+  extends: ['plugin:react/recommended', 'standard-with-typescript'],
+  overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: [
-    'react'
-  ],
-  rules: {
-  }
+  plugins: ['react'],
+  rules: {}
+  // ignorePatterns: ['**/*.css']
 }

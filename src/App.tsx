@@ -1,8 +1,9 @@
 import { supabase } from '@/supabase/supabaseClient'
 import { useEffect } from 'react'
 import { Route } from 'react-router-dom'
-import { ResourceCard } from './component/ResourceCard'
-import { PublicRoutes } from './guard/routes'
+import { useUserContext } from './contexts/User.context'
+import { AuthGuard } from './guard/AuthGuard'
+import { PrivateRoutes, PublicRoutes } from './guard/routes'
 import { Resource } from './models'
 import { RouteNotFound } from './utilities/RouteNotFound'
 import Auth from './views/auth/Auth'
@@ -39,25 +40,25 @@ function App () {
       }
     })
   }, [])
-
+  const { user } = useUserContext()
+  console.log('User', user)
   return (
     <RouteNotFound>
       {/* <Route path="/" element={<Navigate to={PrivateRoutes.HOME} />} /> */}
       <Route path={PublicRoutes.AUTH} element={<Auth />} />
 
       {/* <Route path={PublicRoutes.REGISTER} element={<SignUp />} /> */}
-      <Route
+      {/* <Route
         path='/'
         element={
           <div className='grid p-2 grid-rows-3 bg-slate-900 min-h-screen grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
             <ResourceCard resource={exampleResource} />
           </div>
         }
-      />
-      {/* <Route element={<AuthGuard />}>
-            <Route exact path={PrivateRoutes.HOME} element={<Home />} />
-            
-          </Route> */}
+      /> */}
+      <Route element={<AuthGuard />}>
+        <Route path={PrivateRoutes.HOME} element={<>xd</>} />
+      </Route>
     </RouteNotFound>
   )
 }
