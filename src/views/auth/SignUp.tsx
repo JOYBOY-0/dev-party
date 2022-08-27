@@ -38,13 +38,13 @@ export const Signup : FC<Props> =({
         />
 
         <label
-        htmlFor="password"
+        htmlFor="password-repeat"
         className='auth_label'
         >
         Confirm password
         </label>
         <input
-        id="password"
+        id="password-repeat"
         className="auth_input"
         type="password"
         placeholder="Your password"
@@ -73,7 +73,7 @@ export const Signup : FC<Props> =({
                 className="auth_btn"
                 aria-live="polite"
             >
-                Login
+                Register
             </button>
         </div>
     </div>

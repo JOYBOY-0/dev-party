@@ -39,6 +39,7 @@ const useAuth = () => {
       if (error) throw error
       navigate("/")
     } catch (error) {
+      console.log(error)
       setError((error as ErrorType).error_description || (error as ErrorType).message)
     } finally {
       setLoading(false)
