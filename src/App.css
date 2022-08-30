@@ -46,3 +46,10 @@
     --devpurple-800: #76198f;
     --devpurple-900: #641a75;
 }
+
+.bg-pattern-dark{
+    background: url("/svg/bg_pattern.svg"), theme("colors.slate.900");
+    background-position: top left;
+    background-repeat: repeat;
+    background-size: clamp(250px, 15vw , 400px)
+}
