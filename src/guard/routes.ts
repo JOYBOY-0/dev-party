@@ -5,5 +5,7 @@ export enum PublicRoutes {
 }
 
 export enum PrivateRoutes {
-  HOME = '/'
+  HOME = '/',
+  SUBMIT = '/submit',
+  COLLECTION = '/collection',
 }

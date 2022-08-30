@@ -1,10 +1,13 @@
+import AnimatedSet1 from '@/assets/illustrations/animated_set_1/AnimatedSet1'
 import { ProviderBtn } from '@/common'
+import Header from '@/partials/header/Header'
 import { useState } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
-import './auth.css'
 import { Login } from './Login'
 import { Signup } from './SignUp'
+import './auth.css'
+
 
 export default function Auth () {
   const [email, setEmail] = useState('')
@@ -21,9 +24,14 @@ export default function Auth () {
   } = useAuth()
 
   return (
-    <div className='auth_container'>
+    <>
+    <Header />
+    <div className='auth_container bg-slate-900'>
+
       <div className='auth_wrapper' aria-live='polite'>
-        <div className='auth_bg_anim'>
+
+        <div className={`auth_bg_anim`} >
+
           <div className='auth_form_box'>
             <Routes>
               <Route
@@ -108,13 +116,17 @@ export default function Auth () {
             </Routes>
           </div>
         </div>
+        
         <p className='mt-4 text-center text-white'>
           Forgot your password?
-          <Link to='login' className='font-bold text-yellow-500 mx-1'>
+          <Link to='login' className='font-bold text-devYellow-400 mx-1'>
             Recover it
           </Link>
         </p>
       </div>
+
+      <AnimatedSet1 className='hidden lg:flex w-[50%] max-w-2xl pl-10'  />
     </div>
+    </>
   )
 }
