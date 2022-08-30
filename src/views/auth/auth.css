@@ -1,13 +1,13 @@
 .auth_container {
-  @apply flex flex-col w-screen min-h-screen m-auto justify-center items-center overflow-hidden bg-slate-900;
-  /* background: url("../../resources/images/backgrounds/background_moon_desert.svg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover */
+  @apply flex w-screen min-h-screen
+  max-h-screen max-w-[100vw]
+  m-auto justify-center items-center
+  overflow-hidden;
 }
 
 .auth_wrapper {
-  @apply w-full p-4 max-w-[400px];
+  @apply w-full p-4 max-w-[400px] lg:ml-[10vw];
+
 }
 
 .auth_form_box {
