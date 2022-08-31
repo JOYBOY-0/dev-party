@@ -7,6 +7,7 @@ import { PrivateRoutes, PublicRoutes } from './guard/routes'
 import { Resource } from './models'
 import { RouteNotFound } from './utilities/RouteNotFound'
 import Auth from './views/auth/Auth'
+import Submit from './views/submit/Submit'
 
 const exampleResource: Resource = {
   id: 'dsadq',
@@ -18,15 +19,16 @@ const exampleResource: Resource = {
   company: 'Example Company',
   companyUrl: 'https://example.com',
   tags: [
-    { id: '1', name: 'Web App', image: 'saas' },
-    { id: '2', name: 'Javascript', image: 'javascript' }
+    { id: '1', name: 'Web App', icon: 'saas' },
+    { id: '2', name: 'Javascript', icon: 'javascript' }
   ],
   url: 'https://example.com',
   category: {
     id: '1',
     name: 'Productivity',
-    color: '#FCD34D',
-    image: 'productivity'
+    backgroundColor: '#FCD34D',
+    icon: 'productivity',
+    textColor: '#FFFFFF'
   }
 }
 function App () {
@@ -55,7 +57,8 @@ function App () {
             <ResourceCard resource={exampleResource} />
           </div>
         }
-      /> */}
+      /> */}        
+      <Route path={PrivateRoutes.SUBMIT} element={<Submit />} />
       <Route element={<AuthGuard />}>
         <Route path={PrivateRoutes.HOME} element={<>xd</>} />
       </Route>
