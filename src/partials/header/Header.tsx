@@ -16,7 +16,7 @@ export default function Header() {
     <div className='w-screen fixed top-0 z-50'>
       <div className='w-full mx-auto max-w-[1400px] flex justify-between items-center p-6'>
 
-        <Link to={PrivateRoutes.HOME} className="h-full flex items-center" >
+        <Link to={PublicRoutes.HOME} className="h-full flex items-center" >
           <img src="/logo/logo_sm_color.svg" alt="logo" className='h-[45px] md:hidden my-auto aspect-square' />
           <img src="/logo/logo_md_color.svg" alt="logo" className='h-4 hidden md:flex lg:hidden' />
           <img src="/logo/logo_lg_color.svg" alt="logo" className='h-4 hidden lg:flex' />
@@ -24,7 +24,7 @@ export default function Header() {
 
         <div className='flex items-center h-full '>
           <div className='hidden lg:flex items-center h-full space-x-6 font-primary mr-20'>
-            <NavLink to={PrivateRoutes.HOME} 
+            <NavLink to={PublicRoutes.HOME} 
               className={ ({isActive} : {isActive: boolean}) => isActive ? "text-devPink-600 font-medium underline-" : "text-slate-200 hover:text-white" } >
               Explore
             </NavLink>
@@ -93,7 +93,7 @@ export default function Header() {
         <TransitionModal show={open}>
           <div className="flex flex-col items-start justify-between h-full">
           <nav className='flex flex-col h-full space-y-6 font-primary justify-center text-2xl'>
-            <NavLink to={PrivateRoutes.HOME} 
+            <NavLink to={PublicRoutes.HOME} 
               className={ ({isActive} : {isActive: boolean}) => isActive ? "text-devPink-600 header-navLink-active" : "header-navLink" } >
               Explore
             </NavLink>
