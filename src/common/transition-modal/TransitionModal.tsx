@@ -34,15 +34,15 @@ export const TransitionModal : FC<Props> = (props) => {
         <Transition.Child
             as={Fragment}
             enter="transition-all linear duration-300"
-            enterFrom="transform -translate-y-full"
+            enterFrom="transform h-80 -translate-y-full"
             enterTo="transform h-double"
-            entered='transition-all transform translate-y-[100vh] h-double'
+            entered='transition-all translate-y-[100vh]'
             leave="transition-all linear duration-300"
             leaveFrom="transform translate-y-[100vh] h-double"
-            leaveTo="transform -translate-y-full"
+            leaveTo="transform -translate-y-full h-80"
         >
             <span 
-                className='fixed top-0 left-[10%] w-[80px] h-[300px]
+                className='fixed top-0 left-[10%] w-[80px] h-80
                 flex items-center justify-center
                 rounded-full bg-devPink-600 z-50'
             />
@@ -51,12 +51,12 @@ export const TransitionModal : FC<Props> = (props) => {
         <Transition.Child
             as={Fragment}
             enter="transition-all linear duration-250"
-            enterFrom="transform -translate-y-full"
+            enterFrom="transform -translate-y-full h-[300px]"
             enterTo="transform h-double"
             entered='transition-all transform translate-y-[100vh] h-double'
             leave="transition-all linear duration-250"
             leaveFrom="transform translate-y-[100vh] h-double"
-            leaveTo="transform -translate-y-full"
+            leaveTo="transform -translate-y-full h-[270px]"
         >
             <span 
                 className='fixed top-0 left-1/2 w-[130px] h-[300px]
@@ -68,12 +68,12 @@ export const TransitionModal : FC<Props> = (props) => {
         <Transition.Child
             as={Fragment}
             enter="transition-all linear duration-300 delay-100"
-            enterFrom="transform -translate-y-full"
+            enterFrom="transform -translate-y-full h-[300px]"
             enterTo="transform h-double"
             entered='transition-all transform translate-y-[100vh] h-double'
             leave="transition-all linear duration-300 delay-100"
             leaveFrom="transform translate-y-[100vh] h-double"
-            leaveTo="transform -translate-y-full"
+            leaveTo="transform -translate-y-full h-[300px]"
         >
             <span 
                 className='fixed top-0 left-1/3 w-[60px] h-[300px]
@@ -84,12 +84,12 @@ export const TransitionModal : FC<Props> = (props) => {
         <Transition.Child
             as={Fragment}
             enter="transition-all linear duration-[220ms] delay-[30ms]"
-            enterFrom="transform -translate-y-full"
+            enterFrom="transform -translate-y-full h-[400px]"
             enterTo="transform h-double"
             entered='transition-all transform translate-y-[100vh] h-double'
             leave="transition-all linear duration-[220ms] delay-[30ms]"
             leaveFrom="transform translate-y-[100vh] h-double"
-            leaveTo="transform -translate-y-full"
+            leaveTo="transform -translate-y-full h-[300px]"
         >
             <span 
                 className='fixed top-0 right-0 w-[20px] h-[400px]
@@ -100,12 +100,12 @@ export const TransitionModal : FC<Props> = (props) => {
         <Transition.Child
             as={Fragment}
             enter="transition-all linear duration-[150ms] delay-[60ms]"
-            enterFrom="transform -translate-y-full"
+            enterFrom="transform -translate-y-full h-[500px]"
             enterTo="transform h-double"
             entered='transition-all transform translate-y-[100vh] h-double'
             leave="transition-all linear duration-[150ms] delay-[60ms]"
             leaveFrom="transform translate-y-[100vh] h-double"
-            leaveTo="transform -translate-y-full"
+            leaveTo="transform -translate-y-full h-[500px]"
         >
             <span 
                 className='fixed top-0 left-[5%] w-[15px] h-[500px]
