@@ -29,5 +29,3 @@ export const DropItem : FC<Props> = ({
         </Menu.Item>
     )
 }
-
-export default DropItem;

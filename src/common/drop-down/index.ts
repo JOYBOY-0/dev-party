@@ -1,2 +1,2 @@
 export * from './DropDown';
-export { default as DropItem } from './DropItem';
+export * from './DropItem';
