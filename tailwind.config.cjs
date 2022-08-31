@@ -3,8 +3,11 @@ module.exports = {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      spacing: {
+        double: '200vw'
+      },
       fontFamily: {
-        seconday: ['Inter', 'sans-serif'],
+        secondary: ['Inter', 'sans-serif'],
         primary: ['Montserrat', 'sans-serif']
       },
       colors: {
