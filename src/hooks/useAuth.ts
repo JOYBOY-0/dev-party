@@ -1,4 +1,5 @@
 import { useUserContext } from '@/contexts/User.context'
+import { PublicRoutes } from '@/guard/routes'
 import { getProfile } from '@/supabase/services/GetProfile'
 import { supabase } from '@/supabase/supabaseClient'
 import { Provider } from '@supabase/supabase-js'
@@ -28,7 +29,7 @@ const useAuth = () => {
         console.log('data?.user', data?.user)
         getProfile(data.user.id).then(res => {
           login(res as any)
-          navigate('/')
+          navigate(PublicRoutes.HOME)
         })
       }
     } catch (error) {
@@ -48,7 +49,7 @@ const useAuth = () => {
         password: password
       })
       if (error) throw error
-      navigate('/')
+      navigate(PublicRoutes.HOME)
     } catch (error) {
       console.log(error)
       setError(
@@ -64,10 +65,10 @@ const useAuth = () => {
       setLoading(true)
       const { error } = await supabase.auth.signInWithOAuth({
         provider: provider,
-        options: { redirectTo: '/' }
+        options: { redirectTo: PublicRoutes.HOME }
       })
       if (error) throw error
-      navigate('/')
+      navigate(PublicRoutes.HOME)
     } catch (error) {
       setError(
         (error as ErrorType).error_description || (error as ErrorType).message
