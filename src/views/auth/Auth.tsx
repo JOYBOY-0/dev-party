@@ -1,15 +1,13 @@
 import AnimatedSet1 from '@/assets/illustrations/animated_set_1/AnimatedSet1'
 import { ProviderBtn } from '@/common'
-import { Body } from '@/Layouts/Body'
 import Header from '@/partials/header/Header'
 import { useState } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
-import './auth.css'
 import { Login } from './Login'
 import { Signup } from './SignUp'
-import './auth.css'
 import {LoadSpinner} from '@/common/load-spinner/LoadSpinner'
+import './auth.css'
 
 
 export default function Auth () {
@@ -26,7 +24,7 @@ export default function Auth () {
     loginWithGoogle
   } = useAuth()
 
-  return (
+  return(
     <>
     <Header />
     <div className='auth_container bg-slate-900'>
@@ -130,16 +128,16 @@ export default function Auth () {
           </div>
         </div>
         
-        <p className='mt-4 text-center text-white'>
+        <p className='mt-4 text-center text-white font-secondary'>
           Forgot your password?
           <Link to='login' className='font-bold text-devYellow-400 mx-1'>
             Recover it
           </Link>
         </p>
       </div>
+      <AnimatedSet1 className='hidden lg:flex w-[50%] max-w-2xl pl-10' />
+      </div>
 
-        <AnimatedSet1 className='hidden lg:flex w-[50%] max-w-2xl pl-10' />
-      </Body>
     </>
   )
 }
