@@ -1,9 +1,11 @@
 import AnimatedSet1 from '@/assets/illustrations/animated_set_1/AnimatedSet1'
 import { ProviderBtn } from '@/common'
+import { Body } from '@/Layouts/Body'
 import Header from '@/partials/header/Header'
 import { useState } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
+import './auth.css'
 import { Login } from './Login'
 import { Signup } from './SignUp'
 import './auth.css'
@@ -136,8 +138,8 @@ export default function Auth () {
         </p>
       </div>
 
-      <AnimatedSet1 className='hidden lg:flex w-[50%] max-w-2xl pl-10'  />
-    </div>
+        <AnimatedSet1 className='hidden lg:flex w-[50%] max-w-2xl pl-10' />
+      </Body>
     </>
   )
 }

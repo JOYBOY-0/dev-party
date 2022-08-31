@@ -7,7 +7,6 @@
 
 .auth_wrapper {
   @apply w-full p-4 max-w-[400px] lg:ml-[10vw];
-
 }
 
 .auth_form_box {

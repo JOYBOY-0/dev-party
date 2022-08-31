@@ -4,33 +4,10 @@ import { Route } from 'react-router-dom'
 import { useUserContext } from './contexts/User.context'
 import { AuthGuard } from './guard/AuthGuard'
 import { PrivateRoutes, PublicRoutes } from './guard/routes'
-import { Resource } from './models'
 import { RouteNotFound } from './utilities/RouteNotFound'
 import Auth from './views/auth/Auth'
-import Submit from './views/submit/Submit'
+import { Home } from './views/Home/Home'
 
-const exampleResource: Resource = {
-  id: 'dsadq',
-  name: 'Example Resource',
-  description:
-    'A short description about the app, the problem it solves and the benefits it provides to the user',
-  image: 'https://picsum.photos/200',
-  imageAlt: 'Example Resource',
-  company: 'Example Company',
-  companyUrl: 'https://example.com',
-  tags: [
-    { id: '1', name: 'Web App', icon: 'saas' },
-    { id: '2', name: 'Javascript', icon: 'javascript' }
-  ],
-  url: 'https://example.com',
-  category: {
-    id: '1',
-    name: 'Productivity',
-    backgroundColor: '#FCD34D',
-    icon: 'productivity',
-    textColor: '#FFFFFF'
-  }
-}
 function App () {
   useEffect(() => {
     supabase.auth.onAuthStateChange((_event, session) => {
@@ -48,7 +25,7 @@ function App () {
     <RouteNotFound>
       {/* <Route path="/" element={<Navigate to={PrivateRoutes.HOME} />} /> */}
       <Route path={PublicRoutes.AUTH} element={<Auth />} />
-
+      <Route path={PrivateRoutes.HOME} element={<Home />} />
       {/* <Route path={PublicRoutes.REGISTER} element={<SignUp />} /> */}
       {/* <Route
         path='/'
@@ -57,11 +34,8 @@ function App () {
             <ResourceCard resource={exampleResource} />
           </div>
         }
-      /> */}        
-      <Route path={PrivateRoutes.SUBMIT} element={<Submit />} />
-      <Route element={<AuthGuard />}>
-        <Route path={PrivateRoutes.HOME} element={<>xd</>} />
-      </Route>
+      /> */}
+      <Route element={<AuthGuard />}></Route>
     </RouteNotFound>
   )
 }
