@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        double: '200vw'
+        double: '200vh'
       },
       fontFamily: {
         secondary: ['Inter', 'sans-serif'],
