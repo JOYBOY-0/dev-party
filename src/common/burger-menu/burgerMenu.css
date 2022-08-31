@@ -1,0 +1,107 @@
+
+.burger-menu-svg {
+  position: absolute;
+}
+
+.plate {
+  position: relative;
+  height: 45px;
+  width: 45px;
+}
+
+.burger {
+  filter: url(#gooeyness);
+}
+.x {
+  transform: scale(0);
+  transition: transform 400ms;
+}
+.line {
+  fill: none;
+  stroke: black;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform-origin: 50%;
+  transition: stroke-dasharray 500ms 200ms, stroke-dashoffset 500ms 200ms, transform 500ms 200ms;
+}
+.x .line {
+  stroke-width: 5.5px;
+  stroke: theme('colors.red.500');
+}
+
+.active .line {
+  transition: stroke-dasharray 500ms, stroke-dashoffset 500ms, transform 500ms;
+}
+
+.active .x {
+  transform: scale(1);
+  transition: transform 400ms 350ms;
+}
+
+.plate7 .line {
+  transition: stroke-dasharray 400ms 100ms, stroke-dashoffset 400ms 100ms, transform 400ms 100ms;
+}
+.plate7 .line1 {
+  stroke-dasharray: 21 102;
+  stroke: var(--devpink-600);
+}
+.plate7 .line2 {
+  stroke-dasharray: 21 92;
+  stroke: var(--devpink-600);
+}
+.plate7 .line3 {
+  stroke-dasharray: 21 97;
+  stroke: var(--devblue-600);
+}
+.plate7 .line4 {
+  stroke-dasharray: 21 97;
+  stroke: var(--devblue-600);
+}
+.plate7 .line5 {
+  stroke-dasharray: 21 92;
+  stroke: var(--devyellow-400);
+}
+.plate7 .line6 {
+  stroke-dasharray: 21 102;
+  stroke: var(--devyellow-400);
+}
+.plate7 .x {
+  transition: transform 400ms 50ms;
+}
+
+.active.plate7 .line {
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms, transform 400ms;
+}
+.active.plate7 .line1 {
+  stroke-dasharray: 2 102;
+  stroke-dashoffset: -102px;
+}
+.active.plate7 .line2 {
+  stroke-dasharray: 2 92;
+  stroke-dashoffset: -92px;
+}
+.active.plate7 .line3 {
+  stroke-dasharray: 2 97;
+  stroke-dashoffset: -97px;
+  transition-delay: 20ms;
+}
+.active.plate7 .line4 {
+  stroke-dasharray: 2 97;
+  stroke-dashoffset: -97px;
+  transition-delay: 20ms;
+}
+.active.plate7 .line5 {
+  stroke-dasharray: 2 92;
+  stroke-dashoffset: -92px;
+  transition-delay: 40ms;
+}
+.active.plate7 .line6 {
+  stroke-dasharray: 2 102;
+  stroke-dashoffset: -102px;
+  transition-delay: 40ms;
+  
+}
+.active.plate7 .x {
+  transition: transform 400ms 50ms;
+}
