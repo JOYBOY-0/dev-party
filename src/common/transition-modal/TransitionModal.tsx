@@ -35,10 +35,10 @@ export const TransitionModal : FC<Props> = (props) => {
             as={Fragment}
             enter="transition-all linear duration-300"
             enterFrom="transform -translate-y-full"
-            enterTo="transform h-[200vh]"
-            entered='transition-all transform translate-y-[100vh] h-[200vh]'
+            enterTo="transform h-double"
+            entered='transition-all transform translate-y-[100vh] h-double'
             leave="transition-all linear duration-300"
-            leaveFrom="transform translate-y-[100vh] h-[200vh]"
+            leaveFrom="transform translate-y-[100vh] h-double"
             leaveTo="transform -translate-y-full"
         >
             <span 
@@ -52,10 +52,10 @@ export const TransitionModal : FC<Props> = (props) => {
             as={Fragment}
             enter="transition-all linear duration-250"
             enterFrom="transform -translate-y-full"
-            enterTo="transform h-[200vh]"
-            entered='transition-all transform translate-y-[100vh] h-[200vh]'
+            enterTo="transform h-double"
+            entered='transition-all transform translate-y-[100vh] h-double'
             leave="transition-all linear duration-250"
-            leaveFrom="transform translate-y-[100vh] h-[200vh]"
+            leaveFrom="transform translate-y-[100vh] h-double"
             leaveTo="transform -translate-y-full"
         >
             <span 
@@ -69,10 +69,10 @@ export const TransitionModal : FC<Props> = (props) => {
             as={Fragment}
             enter="transition-all linear duration-300 delay-100"
             enterFrom="transform -translate-y-full"
-            enterTo="transform h-[200vh]"
-            entered='transition-all transform translate-y-[100vh] h-[200vh]'
+            enterTo="transform h-double"
+            entered='transition-all transform translate-y-[100vh] h-double'
             leave="transition-all linear duration-300 delay-100"
-            leaveFrom="transform translate-y-[100vh] h-[200vh]"
+            leaveFrom="transform translate-y-[100vh] h-double"
             leaveTo="transform -translate-y-full"
         >
             <span 
@@ -85,10 +85,10 @@ export const TransitionModal : FC<Props> = (props) => {
             as={Fragment}
             enter="transition-all linear duration-[220ms] delay-[30ms]"
             enterFrom="transform -translate-y-full"
-            enterTo="transform h-[200vh]"
-            entered='transition-all transform translate-y-[100vh] h-[200vh]'
+            enterTo="transform h-double"
+            entered='transition-all transform translate-y-[100vh] h-double'
             leave="transition-all linear duration-[220ms] delay-[30ms]"
-            leaveFrom="transform translate-y-[100vh] h-[200vh]"
+            leaveFrom="transform translate-y-[100vh] h-double"
             leaveTo="transform -translate-y-full"
         >
             <span 
@@ -101,10 +101,10 @@ export const TransitionModal : FC<Props> = (props) => {
             as={Fragment}
             enter="transition-all linear duration-[150ms] delay-[60ms]"
             enterFrom="transform -translate-y-full"
-            enterTo="transform h-[200vh]"
-            entered='transition-all transform translate-y-[100vh] h-[200vh]'
+            enterTo="transform h-double"
+            entered='transition-all transform translate-y-[100vh] h-double'
             leave="transition-all linear duration-[150ms] delay-[60ms]"
-            leaveFrom="transform translate-y-[100vh] h-[200vh]"
+            leaveFrom="transform translate-y-[100vh] h-double"
             leaveTo="transform -translate-y-full"
         >
             <span 
