@@ -51,5 +51,5 @@
     background: url("/svg/bg_pattern.svg"), theme("colors.slate.900");
     background-position: top left;
     background-repeat: repeat;
-    background-size: clamp(250px, 15vw , 400px)
+    background-size: clamp(300px, 15vw , 400px)
 }
