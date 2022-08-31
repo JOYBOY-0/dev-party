@@ -1,0 +1,7 @@
+.header-navLink{
+    @apply text-slate-200 hover:text-white;
+}
+
+.header-navLink-active{
+    @apply font-medium underline decoration-2 underline-offset-4;
+}
