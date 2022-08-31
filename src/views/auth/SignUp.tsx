@@ -6,14 +6,18 @@ type Props = {
     email: string,
     setPassword: (password: string) => void,
     setEmail: (email: string) => void,
+    loading: boolean
 }
 
 export const Signup : FC<Props> =({
-    password, setPassword, email, setEmail, handleSignup
+    password, setPassword, email, setEmail, handleSignup, loading
 }) => {
 
     const [passwordRepeat, setPasswordRepeat] = useState('')
 
+    const handleSubmit = () => {
+        if (!loading) handleSignup(email, password)
+    }
   return (
     <div
         className="auth_form_content"
@@ -33,23 +37,9 @@ export const Signup : FC<Props> =({
         className="auth_input"
         type="email"
         placeholder="adventurer456@mail.com"
+        disabled={loading}
         value={email}
         onChange={(e)=> setEmail(e.target.value)}
-        />
-
-        <label
-        htmlFor="password-repeat"
-        className='auth_label'
-        >
-        Confirm password
-        </label>
-        <input
-        id="password-repeat"
-        className="auth_input"
-        type="password"
-        placeholder="Your password"
-        value={passwordRepeat}
-        onChange={(e)=> setPasswordRepeat(e.target.value)}
         />
 
         <label
@@ -63,14 +53,31 @@ export const Signup : FC<Props> =({
         className="auth_input"
         type="password"
         placeholder="Your password"
+        disabled={loading}
         value={password}
         onChange={(e)=> setPassword(e.target.value)}
         />
 
+        <label
+        htmlFor="password-repeat"
+        className='auth_label'
+        >
+        Confirm password
+        </label>
+        <input
+        id="password-repeat"
+        className="auth_input"
+        type="password"
+        placeholder="Your password"
+        disabled={loading}
+        value={passwordRepeat}
+        onChange={(e)=> setPasswordRepeat(e.target.value)}
+        />
+
         <div className='auth_btn_wrapper'>
             <button
-                onClick={() => handleSignup(email, password)}
-                className="auth_btn"
+                onClick={handleSubmit}
+                className={`${loading ? "btn_disabled" : "auth_btn"}`}
                 aria-live="polite"
             >
                 Register

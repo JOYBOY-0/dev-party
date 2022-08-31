@@ -7,6 +7,7 @@ import useAuth from '../../hooks/useAuth'
 import { Login } from './Login'
 import { Signup } from './SignUp'
 import './auth.css'
+import {LoadSpinner} from '@/common/load-spinner/LoadSpinner'
 
 
 export default function Auth () {
@@ -30,9 +31,17 @@ export default function Auth () {
 
       <div className='auth_wrapper' aria-live='polite'>
 
-        <div className={`auth_bg_anim`} >
+        
 
+        <div className={`auth_bg_anim ${loading && "auth_bg_anim_loading"}`} >
           <div className='auth_form_box'>
+          <div 
+            className={`auth_backdrop_loading
+            ${loading ? "flex " : "hidden" }`}
+          >
+            <LoadSpinner className="w-20 h-20 bg-slate-500 rounded-full" />
+          
+          </div>
             <Routes>
               <Route
                 path='login'
@@ -43,6 +52,7 @@ export default function Auth () {
                     setPassword={setPassword}
                     setEmail={setEmail}
                     handleLogin={handleLogin}
+                    loading={loading}
                   />
                 }
               />
@@ -55,6 +65,7 @@ export default function Auth () {
                     setPassword={setPassword}
                     setEmail={setEmail}
                     handleSignup={handleSignUp}
+                    loading={loading}
                   />
                 }
               />

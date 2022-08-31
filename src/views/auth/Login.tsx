@@ -6,10 +6,11 @@ type Props = {
     email: string,
     setPassword: (password: string) => void,
     setEmail: (email: string) => void,
+    loading: boolean
 }
 
 export const Login : FC<Props> =({
-    password, setPassword, email, setEmail, handleLogin
+    password, setPassword, email, setEmail, handleLogin, loading
 }) => {
   return (
     <div
@@ -31,6 +32,7 @@ export const Login : FC<Props> =({
         type="email"
         placeholder="adventurer456@mail.com"
         value={email}
+        disabled={loading}
         onChange={(e)=> setEmail(e.target.value)}
         />
 
@@ -46,12 +48,13 @@ export const Login : FC<Props> =({
         type="password"
         placeholder="Your password"
         value={password}
+        disabled={loading}
         onChange={(e)=> setPassword(e.target.value)}
         />
         <div className='auth_btn_wrapper'>
             <button
                 onClick={() => handleLogin(email, password)}
-                className="auth_btn"
+                className={`${loading ? "btn_disabled" : "auth_btn"}`}
                 aria-live="polite"
             >
                 Login
