@@ -1,3 +1,5 @@
+import { useUserContext } from '@/contexts/User.context'
+import { getProfile } from '@/supabase/services/GetProfile'
 import { supabase } from '@/supabase/supabaseClient'
 import { Provider } from '@supabase/supabase-js'
 import { useState } from 'react'
@@ -10,19 +12,25 @@ type ErrorType = {
 
 const useAuth = () => {
   const navigate = useNavigate()
-
+  const { user, login, logout } = useUserContext()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
   async function handleLogin (email: string, password: string) {
     try {
       setLoading(true)
-      const { error } = await supabase.auth.signInWithPassword({
+      const { error, data } = await supabase.auth.signInWithPassword({
         email: email,
         password: password
       })
       if (error) throw error
-      navigate('/')
+      if (data?.user) {
+        console.log('data?.user', data?.user)
+        getProfile(data.user.id).then(res => {
+          login(res as any)
+          navigate('/')
+        })
+      }
     } catch (error) {
       setError(
         (error as ErrorType).error_description || (error as ErrorType).message

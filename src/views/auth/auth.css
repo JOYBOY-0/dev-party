@@ -7,7 +7,6 @@
 
 .auth_wrapper {
   @apply w-full p-4 max-w-[400px] lg:ml-[10vw];
-
 }
 
 .auth_form_box {
@@ -63,23 +62,21 @@
   @apply p-2 rounded-2xl bg-devPink-600 relative z-0 overflow-hidden;
 }
 
-.auth_bg_anim::before{
-    content: '';
-    position: absolute;
-    z-index: -2;
-    left: -50%;
-    top: -50%;
-    width: 200%;
-    height: 200%;
-    background-color: var(--devPink-600);
-    background-repeat: no-repeat;
-    background-size: 50% 50%, 50% 50%;
-    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-    background-image: 
-            linear-gradient(var(--devyellow-400), var(--devyellow-400)), 
-            linear-gradient(var(--devpink-600), var(--devpink-600)), 
-            linear-gradient( var(--devblue-600), var(--devblue-600)), 
-            linear-gradient( var(--devpink-600),  var(--devpink-600));
-    animation: solid-rotate 6s linear infinite;
-	}
-	
+.auth_bg_anim::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: var(--devPink-600);
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-image: linear-gradient(var(--devyellow-400), var(--devyellow-400)),
+    linear-gradient(var(--devpink-600), var(--devpink-600)),
+    linear-gradient(var(--devblue-600), var(--devblue-600)),
+    linear-gradient(var(--devpink-600), var(--devpink-600));
+  animation: solid-rotate 6s linear infinite;
+}
