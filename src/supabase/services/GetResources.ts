@@ -3,9 +3,10 @@ import { supabase } from '../supabaseClient'
 
 export const getResources = () =>
   supabase
-    .from<any, Resource[]>('profiles')
-    .select('*')
+    .from<'resources', Resource[]>('resources')
+    .select(`*, company(*)`)
     .then(({ data, error }) => {
+      if (error) throw error
       console.log(data)
-      console.log(error)
+      return data
     })
