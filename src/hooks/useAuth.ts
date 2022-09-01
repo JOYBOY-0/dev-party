@@ -31,7 +31,7 @@ const useAuth = () => {
           login(res as any)
           navigate(PublicRoutes.HOME)
         })
-      }
+      } else throw new Error('No user')
     } catch (error) {
       setError(
         (error as ErrorType).error_description || (error as ErrorType).message
