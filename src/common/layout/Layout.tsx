@@ -19,12 +19,13 @@ export const Layout : FC<Props> = ({
         backgroundRepeat: 'repeat',
         backgroundSize: 'clamp(300px, 15vw , 400px)'
       }}
-      className={`flex justify-center items-center
-      w-screen min-h-screen transition-all
-      m-auto max-h-screen max-w-[100vw]
-      overflow-hidden ${className}`}
-    >
-    {props.children}
+      className={`
+      w-screen min-h-screen pt-24
+      m-auto max-w-[100vw] `}
+    > 
+      <div className={`w-full m-auto max-w-[1400px] px-6 ${className}`}>
+        {props.children}
+      </div>
   </div>
   )
 }

@@ -1,12 +1,9 @@
 .auth_container {
-  @apply flex w-screen min-h-screen
-  max-h-screen max-w-[100vw]
-  m-auto justify-center items-center
-  overflow-hidden;
+  @apply flex flex-col items-center justify-center;
 }
 
 .auth_wrapper {
-  @apply w-full p-4 max-w-[400px] lg:ml-[10vw];
+  @apply w-full max-w-[380px];
 }
 
 .auth_form_box {
@@ -19,11 +16,11 @@
 }
 
 .auth_title {
-  @apply text-2xl font-bold tracking-wide text-slate-100 mb-2;
+  @apply text-2xl font-bold tracking-wide text-slate-100 mb-1;
 }
 
 .auth_subtitle {
-  @apply text-slate-200 text-center mb-4;
+  @apply text-slate-200 text-center mb-3;
 }
 
 .auth_label {
@@ -31,7 +28,7 @@
 }
 
 .auth_input {
-  @apply w-full p-3 text-slate-100 placeholder:text-slate-400 rounded-md shadow-inner bg-slate-600;
+  @apply w-full p-2 text-slate-100 placeholder:text-slate-400 rounded-md shadow-inner bg-slate-600;
 }
 
 .btn_disabled {
