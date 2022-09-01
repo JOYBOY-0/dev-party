@@ -9,4 +9,4 @@ export const getResources = () =>
       if (error) throw error
       console.log(data)
       return data
-    })
+    }) as Promise<Resource[]>
