@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export const usePreviewImage = () => {
-  const [preview, setPreview] = useState<any>(null)
+  const [preview, setPreview] = useState<File | null>(null)
   const [previewImage, setPreviewImage] = useState<string | null>(null)
 
   useEffect(() => {
