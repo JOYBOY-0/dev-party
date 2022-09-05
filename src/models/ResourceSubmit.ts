@@ -13,5 +13,5 @@ export type ResourceSubmit = {
   website: string
   image: string
   imageAlt: string
-  category: Category
+  category: number | null
 }

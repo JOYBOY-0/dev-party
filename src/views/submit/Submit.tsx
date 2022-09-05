@@ -73,13 +73,7 @@ export const Submit = () => {
       name: '',
     },
     tags: [],
-    category: {
-      icon: '',
-      id: '',
-      name: '',
-      backgroundColor: '',
-      textColor: ''
-    }
+    category: null
   })
 
   // console.log(formFields)
@@ -156,9 +150,21 @@ export const Submit = () => {
           <div 
             className='flex space-x-3 font-primary py-2 rounded-xl'
           >
-            <CategoryCard category={0} className='w-1/3' />
-            <CategoryCard category={1} className='w-1/3' />
-            <CategoryCard category={2} className='w-1/3' />
+            <CategoryCard 
+              category={0} 
+              className={`w-1/3 cursor-pointer ${formFields.category === 0 ? '' : 'grayscale'}`} 
+              onClick={() => setFormFields({...formFields, category: 0})}
+            />
+            <CategoryCard 
+              category={1} 
+              className={`w-1/3 cursor-pointer ${formFields.category === 1 ? '' : 'grayscale'}`} 
+              onClick={() => setFormFields({...formFields, category: 1})}
+            />            
+            <CategoryCard 
+              category={2} 
+              className={`w-1/3 cursor-pointer ${formFields.category === 2 ? '' : 'grayscale'}`} 
+              onClick={() => setFormFields({...formFields, category: 2})}
+            />          
           </div>
         </div>
 
