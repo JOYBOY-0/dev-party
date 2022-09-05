@@ -8,7 +8,7 @@ export type Resource = {
   company: string
   companyUrl: string
   tags: Tag[]
-  url: string
+  website: string
   image: string
   imageAlt: string
   category: Category
