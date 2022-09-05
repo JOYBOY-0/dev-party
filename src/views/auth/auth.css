@@ -8,7 +8,7 @@
 
 .auth_form_box {
   /* background: linear-gradient(180deg,  75%, rgba(255, 255, 255, 0.25) 100%); */
-  @apply flex flex-col items-center font-primary p-6 rounded-lg w-full shadow-md bg-slate-700 relative;
+  @apply flex flex-col items-center font-primary p-4 rounded-lg w-full shadow-md bg-slate-700 relative;
 }
 
 .auth_form_content {
@@ -62,7 +62,7 @@
 }
 
 .auth_bg_anim {
-  @apply p-2 rounded-2xl bg-devPink-600 relative z-0 overflow-hidden;
+  @apply p-1 rounded-2xl bg-devPink-600 relative z-0 overflow-hidden;
 }
 
 .auth_bg_anim::before{

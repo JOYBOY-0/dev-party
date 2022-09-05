@@ -13,7 +13,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className='w-screen fixed top-0 z-50'>
+    <div className='w-screen fixed top-0 z-50 bg-gradient-to-b from-slate-900 to-slate-900/0'>
       <div className='w-full mx-auto max-w-[1400px] flex justify-between items-center p-6'>
 
         <Link to={PublicRoutes.HOME} className="h-full flex items-center" >

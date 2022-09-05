@@ -28,10 +28,10 @@ export default function Auth () {
   return(
     <>
       <Header />
-      <Layout >
+      <Layout className='my-auto' >
     
-        <div className="auth_container">
-          <h1 className='text-3xl md:text-4xl 2xl:text-5xl font-primary font-bold text-slate-100 uppercase'>
+        <div className="auth_container mb-4">
+          <h1 className='text-center text-3xl md:text-4xl 2xl:text-5xl font-primary font-bold text-slate-100 uppercase'>
             <span className="underline decoration-4 underline-offset-4 decoration-devPink-600">Join</span> 
             {' the '}
             <span className="text-devPink-600">Paa</span>
@@ -39,7 +39,7 @@ export default function Auth () {
             <span className="text-devBlue-600">arty</span>
             !
           </h1>
-          <p className='font-primary tracking-wide md:text-lg mt-2 mb-4 text-slate-300'>
+          <p className='text-center font-primary tracking-wide md:text-lg mt-2 mb-4 text-slate-300'>
             Join today start collecting the best resources!
           </p>
           
