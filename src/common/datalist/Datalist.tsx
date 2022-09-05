@@ -11,9 +11,9 @@ type Props = {
   placeholder?: string,
   name?: string,
   id? : string,
-  value? : string,
-  onChange? : (e: React.ChangeEvent<HTMLInputElement>) => void,
-  resultRenderer? : (item: any) => JSX.Element,
+  value? : any,
+  onChange? : (e: React.ChangeEvent<any>) => void,
+  resultRenderer? : (item: any, i: number) => JSX.Element,
 }
 
 
@@ -26,7 +26,7 @@ export const Datalist : FC<Props> = ({
   id,
   name,
   placeholder,
-  value,
+  value = '',
   onChange,
   resultRenderer,
   ...props
@@ -44,8 +44,8 @@ export const Datalist : FC<Props> = ({
       )
 
   return (
-    <div className="font-primary group w-full max-w-xs relative z-10">
-      <Combobox value={''} onChange={onChange} >
+    <div className="font-primary group w-full max-w-xs relative">
+      <Combobox value={value} onChange={onChange} >
         <div className="relative w-full">
           <div className="flex flex-col-reverse items-start w-full ">
             <Combobox.Input
@@ -54,7 +54,7 @@ export const Datalist : FC<Props> = ({
               rounded-md  bg-slate-600 peer
               focus:outline-none ring-2 ring-slate-500 focus:ring-devPink-600
               ${className}`}              
-              displayValue={(tag : any) => tag.name}
+              displayValue={value ? value : query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={placeholder}
             />
@@ -82,7 +82,7 @@ export const Datalist : FC<Props> = ({
           >
             <Combobox.Options 
             className="absolute mt-2 max-h-60 w-full 
-            overflow-auto rounded-md
+            overflow-auto rounded-md z-10
             text-slate-100 placeholder:text-slate-400
                bg-slate-600 ring-2 ring-slate-500 ">
               {filteredTag.length === 0 && query !== '' ? (
@@ -90,9 +90,9 @@ export const Datalist : FC<Props> = ({
                   Nothing found.
                 </div>
               ) : (
-                filteredTag.map((item) => (
+                filteredTag.map((item, i) => (
                   resultRenderer ? (
-                    resultRenderer(item)
+                    resultRenderer(item, i)
                   ) : null
                 ))
               )}

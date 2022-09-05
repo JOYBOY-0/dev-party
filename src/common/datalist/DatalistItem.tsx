@@ -9,6 +9,7 @@ type Props = {
     activeClassName? : string,
     inactiveClassName? : string,
     id? : string,
+    value? : any,
     onClick? : () => void,
 }
 
@@ -18,14 +19,15 @@ export const DatalistItem : FC<Props> = ({
     inactiveClassName,
     name, 
     icon,
-    id
+    id,
+    value
 }) => {
   return (
     <Combobox.Option
       className={`text-slate-100 bg-slate-600 relative 
       cursor-default select-none py-2 px-4
       hover:bg-slate-700 hover:text-white ${className}`}
-      value={id}
+      value={value}
     >
       <span
         className={`flex truncate `}
