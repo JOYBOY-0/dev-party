@@ -3,14 +3,13 @@ import { Input } from '@/common/input/Input'
 import { Layout } from '@/common/layout/Layout'
 import { ResourceCard } from '@/component/ResourceCard'
 import { usePreviewImage } from '@/hooks/usePreviewImage'
-import { Resource, Tag } from '@/models'
+import { Tag, ResourceSubmit } from '@/models'
 import { TagElement } from '@/common/tag-element/TagElement';
 import { Textarea } from '@/common/textarea/Textarea';
 import Header from '@/partials/header/Header'
-import { PlusIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import React, { ChangeEvent, useState } from 'react'
+import {CategoryCard} from '@/assets/svg-components/CategoryCard';
 import './submit.css'
-import { ResourceSubmit } from '@/models/ResourceSubmit';
 
 interface E extends ChangeEvent<HTMLInputElement>{}
 interface TE extends ChangeEvent<HTMLTextAreaElement>{}
@@ -155,9 +154,11 @@ export const Submit = () => {
             Tell us wich one describes better the resource.
           </p>
           <div 
-            className='flex space-x-6 font-primary py-8 rounded-xl'
+            className='flex space-x-3 font-primary py-2 rounded-xl'
           >
-            
+            <CategoryCard category={0} className='w-1/3' />
+            <CategoryCard category={1} className='w-1/3' />
+            <CategoryCard category={2} className='w-1/3' />
           </div>
         </div>
 
