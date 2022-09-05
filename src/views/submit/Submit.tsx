@@ -3,41 +3,19 @@ import { Input } from '@/common/input/Input'
 import { Layout } from '@/common/layout/Layout'
 import { ResourceCard } from '@/component/ResourceCard'
 import { usePreviewImage } from '@/hooks/usePreviewImage'
-import { Resource } from '@/models'
+import { Resource, Tag } from '@/models'
 import { TagElement } from '@/common/tag-element/TagElement';
 import { Textarea } from '@/common/textarea/Textarea';
 import Header from '@/partials/header/Header'
 import { PlusIcon, XMarkIcon } from '@heroicons/react/24/solid';
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import './submit.css'
+import { ResourceSubmit } from '@/models/ResourceSubmit';
 
-interface Tag {
-  id: number,
-  name: string;
-  icon: string;
-}
+interface E extends ChangeEvent<HTMLInputElement>{}
+interface TE extends ChangeEvent<HTMLTextAreaElement>{}
 
 export const Submit = () => {
-
-  const { previewImage, setPreview, preview } = usePreviewImage()
-  const [previewState, setPreviewState] = useState<Resource>({
-    id: '',
-    name: '',
-    description: '',
-    url: '',
-    image: '',
-    imageAlt: '',
-    company: '',
-    companyUrl: '',
-    tags: [],
-    category: {
-      icon: '',
-      id: '',
-      name: '',
-      backgroundColor: '',
-      textColor: ''
-    }
-  })
 
   const tagsInitial = [
     { id: 1, name: 'Wade Cooper', icon: "/icons/Github_Logo_white.svg" },
@@ -48,25 +26,64 @@ export const Submit = () => {
     { id: 6, name: 'Hellen Schmidt', icon: "/icons/Github_Logo_white.svg" },
   ]
 
-  const [tags, setTags] = useState<Tag[]>(tagsInitial);
+  const companyInitial = [
+    { id: 1, name: 'Wade Cooper Co.' },
+    { id: 2, name: 'Arlene Mccoy Co.' },
+    { id: 3, name: 'Devon Webb Co.' },
+    { id: 4, name: 'Tom Cook Co.' },
+    { id: 5, name: 'Tanya Fox Co.' },
+    { id: 6, name: 'Hellen Schmidt Co.' },
+  ]
 
-  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+  const [tags, setTags] = useState<Tag[]>(tagsInitial);
+  // const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 
   const addTag = (id: number) => {
     const tag = tags.find(tag => tag.id === id);
     if (tag) {
-      setSelectedTags([...selectedTags, tag]);
+      setFormFields({
+        ...formFields, 
+        tags: [...formFields.tags, tag]
+      });
       setTags(tags.filter(tag => tag.id !== id));
     }
   }
 
   const removeTag = (id: number) => {
-    const tag = selectedTags.find(tag => tag.id === id);
+    const tag = formFields.tags.find(tag => tag.id === id);
     if (tag) {
       setTags([...tags, tag]);
-      setSelectedTags(selectedTags.filter(tag => tag.id !== id));
+      setFormFields({
+        ...formFields, 
+        tags : formFields.tags.filter(tag => tag.id !== id)
+      });
     }
   }
+
+  const { previewImage, setPreview, preview } = usePreviewImage();
+
+  const [formFields, setFormFields] = useState<ResourceSubmit>({
+    id: '',
+    name: '',
+    description: '',
+    website: '',
+    image: '',
+    imageAlt: '',
+    company: {
+      id: null,
+      name: '',
+    },
+    tags: [],
+    category: {
+      icon: '',
+      id: '',
+      name: '',
+      backgroundColor: '',
+      textColor: ''
+    }
+  })
+
+  // console.log(formFields)
 
   return (
     <>
@@ -88,12 +105,17 @@ export const Submit = () => {
           id="submit_resource_name"
           type="text"
           placeholder="Fantastic Resource"
+          value={formFields.name}
+          onChange={(e : E) => setFormFields({...formFields, name: e.target.value})}
         />
+        
         <Input
           label="Website"
           id="submit_resource_website"
           type="text"
           placeholder="www.fantasticresource.com"
+          value={formFields.website}
+          onChange={(e : E) => setFormFields({...formFields, website: e.target.value})}
         />
 
         <Textarea
@@ -102,7 +124,42 @@ export const Submit = () => {
           placeholder="A short and concise description of the project. This will be used in the search results."
           className='resize-none h-28'
           maxLength={150}
+          value={formFields.description}
+          onChange={(e : TE) => setFormFields({...formFields, description: e.target.value})}
         />
+        
+        <Datalist
+          data={companyInitial}
+          value={formFields.company.name}
+          id="submit_resource_company_name"
+          label="Company / Organization"
+          placeholder='Type to search organizations...'
+          onChange={(e : any) => {
+            console.log(e)
+            setFormFields({...formFields, company: e})
+          }}
+          resultRenderer={(company, i) => (
+            <DatalistItem
+              key={i}
+              name={company.name}
+              id={company.id}
+              value={company}
+            />)}
+          />
+
+        <div className='flex flex-col items-start max-w-xs '>
+          <p className="text-white uppercase font-primary" >
+            Category
+          </p>
+          <p className="mb-4 mt-1 text-slate-300 font-primary" >
+            Tell us wich one describes better the resource.
+          </p>
+          <div 
+            className='flex space-x-6 font-primary py-8 rounded-xl'
+          >
+            
+          </div>
+        </div>
 
         <div className='flex flex-col items-start max-w-xs '>
           <p className="text-white uppercase font-primary" >
@@ -115,20 +172,22 @@ export const Submit = () => {
             <Datalist
               data={tags}
               placeholder='Type to search tags...'
+              id='submit_resource_tags'
               onChange={(e : any) => addTag(e)}
-              resultRenderer={(tag) => (
+              resultRenderer={(tag , i) => (
                 <DatalistItem
-                  key={tag.id}
+                  key={i}
                   name={tag.name}
                   icon={tag.icon}
                   id={tag.id}
+                  value={tag.id}
                 />)} 
               />
         <div 
           className='flex space-x-6 font-primary py-8'
         >
           {
-            selectedTags.length === 0 ? (
+            formFields.tags.length === 0 ? (
               <div 
                 className='flex shrink-0 flex-col items-center justify-center w-24 h-24 border-2 border-slate-700 rounded-lg border-dashed'>
                   <p className='text-slate-300 text-sm text-center'>
@@ -136,7 +195,7 @@ export const Submit = () => {
                   </p>
               </div>
               ) :
-            selectedTags.map((tag, i) => (
+            formFields.tags.map((tag, i) => (
             <TagElement 
               key={i} 
               name={tag.name} 
@@ -150,39 +209,35 @@ export const Submit = () => {
         </div>
         </div>
 
-        <Input
-          label="Company / Organization"
-          id="submit_resource_company_name"
-          type="text"
-          placeholder="Fantastic DEV"
-        />
         <div className='flex items-center font-primary gap-2'>
-              <input
-                type='file'
-                className='hidden'
-                id='fileInput'
-                onChange={e => setPreview(e.currentTarget.files![0])}
-              />
-              <label
-                className='px-4 py-2 bg-devPink-600 rounded-md cursor-pointer text-white font-bold hover:bg-devPink-500 active:bg-devPink-600'
-                htmlFor='fileInput'
-              >
-                Submit a file
-              </label>
-              <span className='text-gray-300 text-sm max-w-[20ch] overflow-hidden text-ellipsis whitespace-nowrap'>
-                {preview?.name || 'Add an awesome image'}
-              </span>
-            </div>
+          <input
+            type='file'
+            className='hidden'
+            id='fileInput'
+            onChange={e => setPreview(e.currentTarget.files![0])}
+          />
+          <label
+            className='px-4 py-2 bg-devPink-600 rounded-md cursor-pointer text-white font-bold hover:bg-devPink-500 active:bg-devPink-600'
+            htmlFor='fileInput'
+          >
+            Submit a file
+          </label>
+          <span className='text-gray-300 text-sm max-w-[20ch] overflow-hidden text-ellipsis whitespace-nowrap'>
+            {preview?.name || 'Add an awesome image'}
+          </span>
+        </div>
+        
+        <ResourceCard
+          image={previewImage || 'https://picsum.photos/200/300'}
+          name={formFields.name || 'An awesome resource'}
+          description={formFields.description || 'A description'}
+          company={formFields.company.name || 'Company HI' }
+          tags={formFields.tags}
+          category={formFields.category}
+          imageAlt={formFields.imageAlt || 'An awesome resource'}
+        />
       </form>
-      <ResourceCard
-              image={previewImage || 'https://picsum.photos/200/300'}
-              name={previewState.name || 'An awesome resource'}
-              description={previewState.description || 'A description'}
-              company={previewState.company || 'Company'}
-              tags={previewState.tags}
-              category={previewState.category}
-              imageAlt={previewState.imageAlt || 'An awesome resource'}
-      />
+
 
     </Layout>
     </>
