@@ -10,6 +10,12 @@ module.exports = {
         secondary: ['Inter', 'sans-serif'],
         primary: ['Montserrat', 'sans-serif']
       },
+      boxShadow: {
+        solidSm: '3px 3px 0px 0px rgba(0,0,0,0.75)',
+        solidMd: '6px 6px 0px 0px rgba(0,0,0,0.75)',
+        solidLg: '9px 9px 0px 0px rgba(0,0,0,0.75)',
+        solidXl: '12px 12px 0px 0px rgba(0,0,0,0.75)'
+      },
       colors: {
         devYellow: {
           50: '#fefde8',
