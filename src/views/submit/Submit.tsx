@@ -1,9 +1,12 @@
 import {Datalist, DatalistItem} from '@/common/datalist/index';
-import { Input } from '@/common/input/Input';
-import { Layout } from '@/common/layout/Layout';
+import { Input } from '@/common/input/Input'
+import { Layout } from '@/common/layout/Layout'
+import { ResourceCard } from '@/component/ResourceCard'
+import { usePreviewImage } from '@/hooks/usePreviewImage'
+import { Resource } from '@/models'
 import { TagElement } from '@/common/tag-element/TagElement';
 import { Textarea } from '@/common/textarea/Textarea';
-import Header from '@/partials/header/Header';
+import Header from '@/partials/header/Header'
 import { PlusIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react'
 import './submit.css'
@@ -15,6 +18,26 @@ interface Tag {
 }
 
 export const Submit = () => {
+
+  const { previewImage, setPreview, preview } = usePreviewImage()
+  const [previewState, setPreviewState] = useState<Resource>({
+    id: '',
+    name: '',
+    description: '',
+    url: '',
+    image: '',
+    imageAlt: '',
+    company: '',
+    companyUrl: '',
+    tags: [],
+    category: {
+      icon: '',
+      id: '',
+      name: '',
+      backgroundColor: '',
+      textColor: ''
+    }
+  })
 
   const tagsInitial = [
     { id: 1, name: 'Wade Cooper', icon: "/icons/Github_Logo_white.svg" },
@@ -133,11 +156,37 @@ export const Submit = () => {
           type="text"
           placeholder="Fantastic DEV"
         />
+        <div className='flex items-center font-primary gap-2'>
+              <input
+                type='file'
+                className='hidden'
+                id='fileInput'
+                onChange={e => setPreview(e.currentTarget.files![0])}
+              />
+              <label
+                className='px-4 py-2 bg-devPink-600 rounded-md cursor-pointer text-white font-bold hover:bg-devPink-500 active:bg-devPink-600'
+                htmlFor='fileInput'
+              >
+                Submit a file
+              </label>
+              <span className='text-gray-300 text-sm max-w-[20ch] overflow-hidden text-ellipsis whitespace-nowrap'>
+                {preview?.name || 'Add an awesome image'}
+              </span>
+            </div>
       </form>
+      <ResourceCard
+              image={previewImage || 'https://picsum.photos/200/300'}
+              name={previewState.name || 'An awesome resource'}
+              description={previewState.description || 'A description'}
+              company={previewState.company || 'Company'}
+              tags={previewState.tags}
+              category={previewState.category}
+              imageAlt={previewState.imageAlt || 'An awesome resource'}
+      />
 
     </Layout>
     </>
   )
 }
 
-export default Submit;
+export default Submit
