@@ -1,3 +1,4 @@
+import { Input } from '@/common/input/Input'
 import React, { FC } from 'react'
 
 type Props = {
@@ -20,37 +21,29 @@ export const Login : FC<Props> =({
         <span className="text-pink-500"> back!</span>
         </h1>
         <p className="auth_subtitle">Find usefull web apps today!</p>
-        <label
-        htmlFor="email"
-        className='auth_label'
-        >
-        Email
-        </label>
-        <input
-        id="email"
-        className="auth_input"
-        type="email"
-        placeholder="adventurer456@mail.com"
+
+        <Input
+        label="Email"
+        id="login_email_field"
+        type="text"
+        placeholder="awesomeuser@email.com"
         value={email}
         disabled={loading}
-        onChange={(e)=> setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
+        className="mb-5"
         />
 
-        <label
-        htmlFor="password"
-        className='auth_label'
-        >
-        Password
-        </label>
-        <input
-        id="password"
-        className="auth_input"
+        <Input
+        label="Password"
+        id="login_password_field"
         type="password"
-        placeholder="Your password"
+        placeholder="awesomeuser@email.com"
         value={password}
         disabled={loading}
-        onChange={(e)=> setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
         />
+
+ 
         <div className='auth_btn_wrapper'>
             <button
                 onClick={() => handleLogin(email, password)}
