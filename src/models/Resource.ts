@@ -11,5 +11,5 @@ export type Resource = {
   website: string
   image: string
   imageAlt: string
-  category: Category
+  category: Category['id']
 }

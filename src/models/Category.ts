@@ -1,7 +1,13 @@
 export type Category = {
-  id: string
+  id: number
   name: string
   icon: string
   textColor: string
   backgroundColor: string
+}
+
+export enum CategoryId {
+  PRODUCTIVITY,
+  DESIGN,
+  CODING
 }
