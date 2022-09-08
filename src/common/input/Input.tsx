@@ -5,6 +5,7 @@ interface Props extends AllHTMLAttributes<HTMLInputElement> {
     tag?: boolean,
     placeholder?: string,
     name?: string,
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
 }
 
 export const Input : FC<Props> = ({
