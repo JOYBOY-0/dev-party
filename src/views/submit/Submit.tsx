@@ -163,7 +163,12 @@ export const Submit = () => {
                     ? ''
                     : 'grayscale opacity-60 scale-95'
                 }`}
-                onClick={() => setFormFields({ ...formFields, category: 0 })}
+                onClick={() =>
+                  setFormFields({
+                    ...formFields,
+                    category: CategoryId.PRODUCTIVITY
+                  })
+                }
               />
               <CategoryCard
                 category={CategoryId.DESIGN}
@@ -172,7 +177,9 @@ export const Submit = () => {
                     ? ''
                     : 'grayscale opacity-60 scale-95'
                 }`}
-                onClick={() => setFormFields({ ...formFields, category: 1 })}
+                onClick={() =>
+                  setFormFields({ ...formFields, category: CategoryId.DESIGN })
+                }
               />
               <CategoryCard
                 category={CategoryId.CODING}
@@ -181,7 +188,9 @@ export const Submit = () => {
                     ? ''
                     : 'grayscale opacity-60 scale-95'
                 }`}
-                onClick={() => setFormFields({ ...formFields, category: 2 })}
+                onClick={() =>
+                  setFormFields({ ...formFields, category: CategoryId.CODING })
+                }
               />
             </div>
           </div>

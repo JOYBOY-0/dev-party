@@ -1,3 +1,4 @@
+import { CategoryTheme } from '@/theme/CategoryTheme'
 import React, { FC } from 'react'
 import { Resource } from '../models'
 interface Props extends Partial<Resource> {
@@ -7,7 +8,12 @@ interface Props extends Partial<Resource> {
 export const ResourceCard: FC<Props> = props => {
   return (
     <article
-      style={{ borderColor: props.category?.backgroundColor || 'gray' }}
+      style={{
+        borderColor:
+          props.category !== null
+            ? CategoryTheme[props.category].backgroundColor
+            : 'gray'
+      }}
       className='rounded-xl max-w-xs shadow-sm relative flex flex-col overflow-hidden border-[3px] border-red-500'
     >
       <img
@@ -19,7 +25,12 @@ export const ResourceCard: FC<Props> = props => {
         <h3 className='text-white font-bold text-2xl'>{props.name}</h3>
         <p className='font-extralight'>
           BY
-          <span className='text-yellow-300 font-bold ml-2'>
+          <span
+            style={{
+              color: CategoryTheme[props.category]?.backgroundColor || 'gray'
+            }}
+            className='font-bold ml-2'
+          >
             {props.company}
           </span>
         </p>

@@ -1,4 +1,4 @@
-import { Category } from '@/models/Category'
+import { CategoryId } from './Category'
 import { Tag } from './Tag'
 
 export type ResourceSubmit = {
@@ -6,12 +6,12 @@ export type ResourceSubmit = {
   name: string
   description: string
   company: {
-    name: string,
+    name: string
     id: number | null
   }
   tags: Tag[]
   website: string
   image: string
   imageAlt: string
-  category: number | null
+  category: CategoryId | null
 }
