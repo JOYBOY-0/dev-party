@@ -12,7 +12,7 @@ type Props = {
   name?: string,
   id? : string,
   value? : any,
-  onChange? : (e: React.ChangeEvent<any>) => void,
+  onChange : (e: React.ChangeEvent<any>) => void,
   resultRenderer? : (item: any, i: number) => JSX.Element,
 }
 
