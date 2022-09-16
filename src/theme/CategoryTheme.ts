@@ -15,7 +15,7 @@ export const CategoryTheme: any = {
     // Design
 
     backgroundColor: '#ec2872',
-    textColor: '#000000',
+    textColor: '#FFF',
     icon: DesignIcon,
     name: 'Design'
   },
@@ -23,7 +23,7 @@ export const CategoryTheme: any = {
     // Coding
 
     backgroundColor: '#2f9aeb',
-    textColor: '#ffffff',
+    textColor: '#FFF',
     icon: CodeIcon,
     name: 'Coding'
   }

@@ -20,8 +20,8 @@ export const Layout : FC<Props> = ({
         backgroundSize: 'clamp(300px, 15vw , 400px)'
       }}
       className={`flex
-      w-screen min-h-screen pt-24
-      mx-auto max-w-[100vw] `}
+      w-full min-h-screen pt-24
+       max-w-[100vw] `}
     > 
       <div className={`w-full h-full mx-auto max-w-[1400px] px-6 ${className}`}>
         {props.children}

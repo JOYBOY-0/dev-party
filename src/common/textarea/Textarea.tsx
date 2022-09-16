@@ -21,7 +21,7 @@ export const Textarea : FC<Props> = ({
 }) => {
 
   return (
-    <div className='flex flex-col-reverse items-start font-primary group w-full max-w-xs '>
+    <div className='flex flex-col-reverse items-start font-primary group w-full '>
 
         <textarea 
         className={`w-full p-2 

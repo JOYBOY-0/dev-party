@@ -44,7 +44,7 @@ export const Datalist : FC<Props> = ({
       )
 
   return (
-    <div className="font-primary group w-full max-w-xs relative">
+    <div className="font-primary group w-full relative">
       <Combobox value={value} onChange={onChange} >
         <div className="relative w-full">
           <div className="flex flex-col-reverse items-start w-full ">

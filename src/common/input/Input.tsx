@@ -24,7 +24,7 @@ export const Input : FC<Props> = ({
 }) => {
 
   return (
-    <div className='flex flex-col-reverse items-start font-primary group w-full max-w-xs relative'>
+    <div className='flex flex-col-reverse items-start font-primary group w-full relative'>
 
         <input 
         className={`w-full p-2 
