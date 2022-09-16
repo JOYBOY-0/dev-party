@@ -101,7 +101,8 @@ export const Submit = () => {
           xl:grid-cols-3'
         >
           <div className=' flex flex-col gap-y-6 max-w-sm 
-           xl:grid xl:col-span-2 xl:grid-cols-2 xl:max-w-[none] xl:gap-x-10'>
+           xl:col-span-2 xl:max-w-[none] xl:gap-x-10
+            xl:[&>*]:max-w-[45%] xl:max-h-[800px] xl:flex-wrap'>
             <Input
               label='Name'
               id='submit_resource_name'
@@ -265,9 +266,9 @@ export const Submit = () => {
           </div>
           <div 
             className='flex flex-col items-center justify-center grow
-            md:sticky md:top-[100px]'
+            md:sticky md:top-[100px] bg-slate-700 rounded-xl py-10'
           >
-            <div className='flex flex-col items-start '>
+            <div className='flex flex-col items-start justify-start'>
               <p className='text-white uppercase font-primary'>
                 Preview
               </p>
