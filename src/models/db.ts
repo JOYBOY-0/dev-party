@@ -32,6 +32,20 @@ export interface Database {
           created_at?: string | null
         }
       }
+      category: {
+        Row: {
+          id: number
+          name: string
+        }
+        Insert: {
+          id?: number
+          name: string
+        }
+        Update: {
+          id?: number
+          name?: string
+        }
+      }
       tags: {
         Row: {
           id: number
@@ -62,6 +76,7 @@ export interface Database {
           image: string
           company_id: string
           tags: number[] | null
+          category_id: number
         }
         Insert: {
           id?: string
@@ -72,6 +87,7 @@ export interface Database {
           image: string
           company_id: string
           tags?: number[] | null
+          category_id: number
         }
         Update: {
           id?: string
@@ -82,6 +98,7 @@ export interface Database {
           image?: string
           company_id?: string
           tags?: number[] | null
+          category_id?: number
         }
       }
       collection: {
@@ -171,6 +188,7 @@ export interface Database {
           image: string
           company_id: string
           tags: number[] | null
+          category_id: number
         }
         Insert: {
           id?: string
@@ -181,6 +199,7 @@ export interface Database {
           image: string
           company_id: string
           tags?: number[] | null
+          category_id: number
         }
         Update: {
           id?: string
@@ -191,6 +210,7 @@ export interface Database {
           image?: string
           company_id?: string
           tags?: number[] | null
+          category_id?: number
         }
       }
     }
@@ -205,3 +225,5 @@ export interface Database {
     }
   }
 }
+
+export type Company = Database['public']['Tables']['company']['Row']
