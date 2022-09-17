@@ -7,7 +7,7 @@ export type ResourceSubmit = {
   description: string
   company: {
     name: string
-    id: number | null
+    id: string | null
   }
   tags: Tag[]
   website: string

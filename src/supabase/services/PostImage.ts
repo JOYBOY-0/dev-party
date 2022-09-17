@@ -1,6 +1,6 @@
 import { supabase } from '../supabaseClient'
 
-function getPublicUrl (
+export function postImage (
   path: string,
   file:
     | string
@@ -15,7 +15,7 @@ function getPublicUrl (
     | URLSearchParams
 ): Promise<string> {
   return supabase.storage
-    .from('resources_images')
+    .from('resource-image')
     .upload(path, file)
     .then(({ data, error }) => {
       if (error) throw error
