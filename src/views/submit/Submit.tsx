@@ -1,42 +1,61 @@
-import { CategoryCard } from '@/assets/svg-components/CategoryCard'
-import { Datalist, DatalistItem } from '@/common/datalist/index'
-import { Input } from '@/common/input/Input'
-import { Layout } from '@/common/layout/Layout'
-import { TagSpan } from '@/common/tag-element'
-import { TagElement } from '@/common/tag-element/TagElement'
-import { Textarea } from '@/common/textarea/Textarea'
+import { CategoryCard } from '@/assets'
+import {
+  Datalist,
+  DatalistItem,
+  Input,
+  Layout,
+  TagSpan,
+  Textarea
+} from '@/common'
 import { ResourceCard } from '@/component/ResourceCard'
 import { usePreviewImage } from '@/hooks/usePreviewImage'
-import { CategoryId, ResourceSubmit, Tag } from '@/models'
+import { CategoryId, Company, ResourceSubmit, Tag } from '@/models'
 import Header from '@/partials/header/Header'
-import { ChangeEvent, useState } from 'react'
+import {
+  getCompanies,
+  getTags,
+  postImage,
+  postResourceRecommend
+} from '@/supabase/services'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import './submit.css'
+
+const initialStateForm = {
+  id: '',
+  name: '',
+  description: '',
+  website: '',
+  image: '',
+  imageAlt: '',
+  company: {
+    id: null,
+    name: ''
+  },
+  tags: [],
+  category: null
+}
 
 interface E extends ChangeEvent<HTMLInputElement> {}
 interface TE extends ChangeEvent<HTMLTextAreaElement> {}
 
 export const Submit = () => {
-  const tagsInitial = [
-    { id: 1, name: 'Wade Cooper', icon: '/icons/Github_Logo_white.svg' },
-    { id: 2, name: 'Arlene Mccoy', icon: '/icons/Github_Logo_white.svg' },
-    { id: 3, name: 'Devon Webb', icon: '/icons/Github_Logo_white.svg' },
-    { id: 4, name: 'Tom Cook', icon: '/icons/Github_Logo_white.svg' },
-    { id: 5, name: 'Tanya Fox', icon: '/icons/Github_Logo_white.svg' },
-    { id: 6, name: 'Hellen Schmidt', icon: '/icons/Github_Logo_white.svg' }
-  ]
+  const [company, setCompany] = useState<Company[]>([])
+  const [tags, setTags] = useState<Tag[]>([])
+  const [formFields, setFormFields] = useState<ResourceSubmit>(initialStateForm)
+  const { previewImage, setPreview, preview } = usePreviewImage()
 
-  const companyInitial = [
-    { id: 1, name: 'Wade Cooper Co.' },
-    { id: 2, name: 'Arlene Mccoy Co.' },
-    { id: 3, name: 'Devon Webb Co.' },
-    { id: 4, name: 'Tom Cook Co.' },
-    { id: 5, name: 'Tanya Fox Co.' },
-    { id: 6, name: 'Hellen Schmidt Co.' }
-  ]
+  useEffect(() => {
+    // AL CARGAR LA VIEW, HARÁ UNA PETICIÓN A LA BASE DE DATOS PARA OBTENER TODAS LAS EMPRESAS Y TODOS LOS TAGS
+    if (company.length > 0) return
+    getCompanies().then(res => {
+      setCompany(res)
+    })
+    getTags().then(res => {
+      setTags(res)
+    })
+  }, [])
 
-  const [tags, setTags] = useState<Tag[]>(tagsInitial)
-  // const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
-
+  // estado para la tag TODO: componentizar el tag
   const addTag = (id: number) => {
     const tag = tags.find(tag => tag.id === id)
     if (tag) {
@@ -59,25 +78,38 @@ export const Submit = () => {
     }
   }
 
-  const { previewImage, setPreview, preview } = usePreviewImage()
-
-  const [formFields, setFormFields] = useState<ResourceSubmit>({
-    id: '',
-    name: '',
-    description: '',
-    website: '',
-    image: '',
-    imageAlt: '',
-    company: {
-      id: null,
-      name: ''
-    },
-    tags: [],
-    category: null
-  })
-
-  // console.log(formFields)
-
+  function submit (e: FormEvent) {
+    e.preventDefault()
+    if (
+      !preview ||
+      formFields.category === null ||
+      !formFields.name ||
+      !formFields.description ||
+      !formFields.website ||
+      !formFields.company
+    )
+      return // TODO: show error message
+    postImage(`submitted/${formFields.name}`, preview)
+      .then(path => {
+        return {
+          name: formFields.name,
+          description: formFields.description,
+          website: formFields.website,
+          image: path,
+          tags: formFields.tags.map(tag => tag.id),
+          company_id: formFields.company.id as string,
+          category_id: formFields.category as number
+        }
+      })
+      .then(postResourceRecommend)
+      .then(() => {
+        // TODO: show success message
+      })
+      .catch(err => {
+        // TODO: show error message
+      })
+  }
+  console.log(tags)
   return (
     <>
       <Header />
@@ -94,15 +126,17 @@ export const Submit = () => {
         </p>
 
         <form
-          onSubmit={e => e.preventDefault()}
+          onSubmit={submit}
           className='w-full bg-slate-800 p-4 lg:p-6 rounded-xl 
           flex flex-col items-center justify-center
           md:grid md:grid-cols-2 md:justify-start md:items-start md:gap-10
           xl:grid-cols-3'
         >
-          <div className=' flex flex-col gap-y-6 max-w-sm 
+          <div
+            className=' flex flex-col gap-y-6 max-w-sm 
            xl:col-span-2 xl:max-w-[none] xl:gap-x-10
-            xl:[&>*]:max-w-[45%] xl:max-h-[800px] xl:flex-wrap'>
+            xl:[&>*]:max-w-[45%] xl:max-h-[800px] xl:flex-wrap'
+          >
             <Input
               label='Name'
               id='submit_resource_name'
@@ -138,7 +172,7 @@ export const Submit = () => {
             />
 
             <Datalist
-              data={companyInitial}
+              data={company}
               value={formFields.company.name}
               id='submit_resource_company_name'
               label='Company / Organization'
@@ -158,9 +192,7 @@ export const Submit = () => {
             />
 
             <div className='flex flex-col items-start '>
-              <p className='text-white uppercase font-primary'>
-                Category
-              </p>
+              <p className='text-white uppercase font-primary'>Category</p>
               <p className='mb-4 mt-1 text-slate-300 font-primary'>
                 Tell us wich one describes better the resource.
               </p>
@@ -187,7 +219,10 @@ export const Submit = () => {
                       : 'grayscale opacity-60 scale-95'
                   }`}
                   onClick={() =>
-                    setFormFields({ ...formFields, category: CategoryId.DESIGN })
+                    setFormFields({
+                      ...formFields,
+                      category: CategoryId.DESIGN
+                    })
                   }
                 />
                 <CategoryCard
@@ -198,7 +233,10 @@ export const Submit = () => {
                       : 'grayscale opacity-60 scale-95'
                   }`}
                   onClick={() =>
-                    setFormFields({ ...formFields, category: CategoryId.CODING })
+                    setFormFields({
+                      ...formFields,
+                      category: CategoryId.CODING
+                    })
                   }
                 />
               </div>
@@ -262,16 +300,13 @@ export const Submit = () => {
                 {preview?.name || 'Add an awesome image'}
               </span>
             </div>
-
           </div>
-          <div 
+          <div
             className='flex flex-col items-center justify-center grow
-            md:sticky md:top-[100px] bg-slate-700 rounded-xl py-10'
+            md:sticky md:top-[100px] md:bg-slate-700 rounded-xl py-10 gap-4'
           >
             <div className='flex flex-col items-start justify-start'>
-              <p className='text-white uppercase font-primary'>
-                Preview
-              </p>
+              <p className='text-white uppercase font-primary'>Preview</p>
               <p className='mb-4 mt-1 text-slate-300 font-primary'>
                 This is how it will look like 😍
               </p>
@@ -285,6 +320,12 @@ export const Submit = () => {
                 imageAlt={formFields.imageAlt || 'An awesome resource'}
               />
             </div>
+            <button
+              type='submit'
+              className='bg-devPink-600 mx-auto font-bold w-max px-6 py-2 rounded text-white'
+            >
+              Submit
+            </button>
           </div>
         </form>
       </Layout>
