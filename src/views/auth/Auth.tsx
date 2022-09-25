@@ -27,6 +27,7 @@ export default function Auth () {
 
   return(
     <>
+      <LoadSpinner show={loading} />
       <Header />
       <Layout className='my-auto' >
     
@@ -46,14 +47,7 @@ export default function Auth () {
           <div className="flex items-center justify-center w-full lg:mb-10">
             <div className='auth_wrapper' aria-live='polite'>
               <div className={`auth_bg_anim ${loading && "auth_bg_anim_loading"}`} >
-                <div className='auth_form_box'>
-                <div 
-                  className={`auth_backdrop_loading
-                  ${loading ? "flex " : "hidden" }`}
-                >
-                  <LoadSpinner className="w-20 h-20 bg-slate-500 rounded-full" />
-                
-                </div>
+                <div className='auth_form_box'>                              
                   <Routes>
                     <Route
                       path='login'

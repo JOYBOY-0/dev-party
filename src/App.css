@@ -53,3 +53,12 @@
     background-repeat: repeat;
     background-size: clamp(300px, 15vw , 400px)
 }
+
+html{
+    scroll-behavior: smooth;
+    font-family: 'Montserrat', sans-serif;
+}
+
+*{
+  -webkit-tap-highlight-color: transparent;
+}

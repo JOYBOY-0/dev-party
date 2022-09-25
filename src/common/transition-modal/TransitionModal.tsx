@@ -4,13 +4,21 @@ import { FC, Fragment } from 'react'
 type Props = {
     children? : React.ReactNode,
     show : boolean,
+    background? : string,
+    z? : string
 }
 
-export const TransitionModal : FC<Props> = (props) => {
+export const TransitionModal : FC<Props> = ({
+    children,
+    show,
+    background = 'bg-slate-900',
+    z = '10'
+}) => {
   return (
     <Transition
-        show={props.show}
-        className="fixed inset-0 z-10 overflow-hidden"
+        style={{zIndex:z}}
+        show={show}
+        className={`fixed inset-0 overflow-hidden`}
         // as={Fragment}
     >
         <Transition.Child
@@ -23,11 +31,11 @@ export const TransitionModal : FC<Props> = (props) => {
             leaveTo="transform opacity-0 scale-95"
         >
             <div 
-                className='fixed top-0 left-0 w-full h-full
+                className={`fixed top-0 left-0 w-full h-full
                 flex items-center justify-center
-                bg-slate-900 z-50 '
+                 z-50 ${background}`}
             >
-                {props.children}
+                {children}
             </div>
         </Transition.Child>
 

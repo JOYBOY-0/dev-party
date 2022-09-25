@@ -8,9 +8,11 @@ import {
   TagSpan,
   Textarea
 } from '@/common'
+import { ErrorMessage } from '@/common/errorMessage/ErrorMessage'
 import { ResourceCard } from '@/component/ResourceCard'
 import { usePreviewImage } from '@/hooks/usePreviewImage'
 import { CategoryId, Company, ResourceSubmit, Tag } from '@/models'
+import { Status } from '@/models/Status'
 import Header from '@/partials/header/Header'
 import {
   getCompanies,
@@ -44,6 +46,8 @@ export const Submit = () => {
   const [tags, setTags] = useState<Tag[]>([])
   const [formFields, setFormFields] = useState<ResourceSubmit>(initialStateForm)
   const { previewImage, setPreview, preview } = usePreviewImage()
+  const [status, setStatus] = useState<Status>(Status.IDLE)
+  const [uploadStatus, setUploadStatus] = useState<Status>(Status.IDLE)
 
   useEffect(() => {
     // AL CARGAR LA VIEW, HARÁ UNA PETICIÓN A LA BASE DE DATOS PARA OBTENER TODAS LAS EMPRESAS Y TODOS LOS TAGS
@@ -90,9 +94,13 @@ export const Submit = () => {
       !formFields.company
     )
       return // TODO: show error message
+      setStatus(Status.LOADING)
+      setUploadStatus(Status.LOADING)
+
     postImage('resource-image', `submitted/${formFields.name}`, preview)
       .then(path => {
         // setas cargando imagen
+        setUploadStatus(Status.SUCESS)
         return {
           name: formFields.name,
           description: formFields.description,
@@ -107,16 +115,34 @@ export const Submit = () => {
       .then(postResourceRecommend)
       .then(() => {
         // TODO: show success message
+        setStatus(Status.SUCESS)
       })
       .catch(err => {
         // TODO: show error message
+        setStatus(Status.ERROR)
       })
   }
-  console.log(tags)
+
   return (
     <>
-      <LoadSpinner 
-      />
+      <ErrorMessage
+        isOpen={status === Status.ERROR || uploadStatus === Status.ERROR}
+        close={() => {setStatus(Status.IDLE); setUploadStatus(Status.IDLE)}}
+        errorTitle="Ops! Something went wrong"
+        errorDescription={uploadStatus === Status.ERROR ? 
+          'Error uploading image' :
+          'Server error during resource submission, this is probably our fault, please try again later'}
+      >
+
+      </ErrorMessage>
+      <LoadSpinner
+        show={status === Status.LOADING }
+      >
+        <h1 className='text-xl text-slate-200 font-semibold mt-2'>
+          {uploadStatus === Status.LOADING && 'Cargando imagen...'}
+          {uploadStatus == Status.SUCESS && 'Enviando...'}
+        </h1>
+      </LoadSpinner>
       <Header />
       <Layout className='mb-20'>
         <h1 className='text-3xl md:text-4xl font-primary font-bold text-slate-100 uppercase leading-10'>
