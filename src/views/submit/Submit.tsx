@@ -4,6 +4,7 @@ import {
   DatalistItem,
   Input,
   Layout,
+  LoadSpinner,
   TagSpan,
   Textarea
 } from '@/common'
@@ -112,6 +113,8 @@ export const Submit = () => {
   console.log(tags)
   return (
     <>
+      <LoadSpinner 
+      />
       <Header />
       <Layout className='mb-20'>
         <h1 className='text-3xl md:text-4xl font-primary font-bold text-slate-100 uppercase leading-10'>

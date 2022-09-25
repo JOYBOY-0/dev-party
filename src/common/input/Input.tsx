@@ -29,8 +29,12 @@ export const Input : FC<Props> = ({
         <input 
         className={`w-full p-2 
         text-slate-100 placeholder:text-slate-400
-        rounded-md shadow-inner bg-slate-600 peer
-        focus:outline-none ring-2 ring-slate-500 focus:ring-devPink-600
+        rounded-md bg-slate-600 
+        shadow-innerSm peer
+         shadow-slate-900/20 focus:shadow-devPink-600/30
+         ring-slate-500 focus:ring-devPink-600
+        focus:outline-none ring-2
+        
         ${className}`}
         id={id}
         name={name ? name : id}

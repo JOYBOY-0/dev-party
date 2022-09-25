@@ -52,7 +52,9 @@ export const Datalist : FC<Props> = ({
               className={`w-full p-2 
               text-slate-100 placeholder:text-slate-400
               rounded-md  bg-slate-600 peer
-              focus:outline-none ring-2 ring-slate-500 focus:ring-devPink-600
+              focus:outline-none ring-2 shadow-innerSm
+              shadow-slate-900/20 focus:shadow-devPink-600/30
+            ring-slate-500 focus:ring-devPink-600
               ${className}`}              
               displayValue={value ? value : query}
               onChange={(e) => setQuery(e.target.value)}

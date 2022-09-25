@@ -1,11 +1,23 @@
-@keyframes loadSpinner {
+
+
+  @keyframes loadIcon {
+    0%, 50%{
+      transform: rotate(.5turn);
+    }
+  }
+
+  .loadIcon{
+    animation: loadIcon 1s linear infinite;
+  }
+
+  @keyframes loadSpinner {
     100% {
       transform: rotate(1turn);
     }
   }
   
   .load-spinner {
-    @apply p-2 rounded-full bg-devPink-600 relative z-0 overflow-hidden;
+    @apply p-2 rounded-full relative z-0 bg-devPink-600 overflow-hidden;
   }
   
   .load-spinner::before{
@@ -16,14 +28,13 @@
       top: -50%;
       width: 200%;
       height: 200%;
-      background-color: var(--devPink-600);
       background-repeat: no-repeat;
       background-size: 50% 50%, 50% 50%;
-      background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+      background-position: 0 0, 100% 100%, 50% 100%;
       background-image: 
               linear-gradient(var(--devyellow-400), var(--devyellow-400)), 
-              /* linear-gradient(var(--devpink-600), var(--devpink-600)),  */
               linear-gradient( var(--devblue-600), var(--devblue-600)), 
               linear-gradient( var(--devpink-600),  var(--devpink-600));
-      animation: loadSpinner 1s linear infinite;
+      animation: loadSpinner 2s linear infinite;
       }
+
