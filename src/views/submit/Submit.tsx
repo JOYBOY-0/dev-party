@@ -90,8 +90,9 @@ export const Submit = () => {
       !formFields.company
     )
       return // TODO: show error message
-    postImage(`submitted/${formFields.name}`, preview)
+    postImage('resource-image', `submitted/${formFields.name}`, preview)
       .then(path => {
+        // setas cargando imagen
         return {
           name: formFields.name,
           description: formFields.description,
@@ -102,6 +103,7 @@ export const Submit = () => {
           category_id: formFields.category as number
         }
       })
+      // 👇 aca seteas el estado de cargando recurso
       .then(postResourceRecommend)
       .then(() => {
         // TODO: show success message

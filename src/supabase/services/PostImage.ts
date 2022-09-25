@@ -1,6 +1,7 @@
-import { supabase } from '../supabaseClient'
+import { supabase, supabaseUrl } from '../supabaseClient'
 
 export function postImage (
+  bucketName: string,
   path: string,
   file:
     | string
@@ -15,10 +16,13 @@ export function postImage (
     | URLSearchParams
 ): Promise<string> {
   return supabase.storage
-    .from('resource-image')
+    .from(bucketName)
     .upload(path, file)
     .then(({ data, error }) => {
       if (error) throw error
-      return data.path
+      let url = encodeURI(
+        `${supabaseUrl}storage/v1/object/public/${bucketName}/${data.path}`
+      )
+      return url
     })
 }
