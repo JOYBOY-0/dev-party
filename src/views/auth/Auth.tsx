@@ -10,7 +10,6 @@ import {LoadSpinner} from '@/common/load-spinner/LoadSpinner'
 import './auth.css'
 import { Layout } from '@/common/layout/Layout'
 
-
 export default function Auth () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

@@ -9,7 +9,7 @@ import {
   Textarea
 } from '@/common'
 import { ErrorMessage } from '@/common/errorMessage/ErrorMessage'
-import { ResourceCard } from '@/component/ResourceCard'
+import { ResourceCard } from '@/common/resource-card/ResourceCard'
 import { usePreviewImage } from '@/hooks/usePreviewImage'
 import { CategoryId, Company, ResourceSubmit, Tag } from '@/models'
 import { Status } from '@/models/Status'
