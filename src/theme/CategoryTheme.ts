@@ -1,4 +1,4 @@
-import { ProductivityIcon } from '@/assets/icons'
+import  ProductivityIcon  from '@/assets/icons/ProductivityIcon'
 import CodeIcon from '@/assets/icons/CodeIcon'
 import DesignIcon from '@/assets/icons/DesignIcon'
 
