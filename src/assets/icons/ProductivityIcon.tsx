@@ -1,7 +1,7 @@
 import * as React from "react"
 import { SVGProps } from "react"
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
+const ProductivityIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     data-name="Capa 1"
     xmlns="http://www.w3.org/2000/svg"
@@ -19,4 +19,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-export default SvgComponent
+export default ProductivityIcon
