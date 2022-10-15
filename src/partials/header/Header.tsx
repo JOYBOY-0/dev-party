@@ -42,6 +42,7 @@ export default function Header () {
           <div className='hidden lg:flex items-center h-full space-x-6 font-primary mr-20'>
             <NavLink
               to={PublicRoutes.HOME}
+              end
               className={({ isActive }: { isActive: boolean }) =>
                 isActive
                   ? 'text-devPink-600 font-medium underline-'
